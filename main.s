@@ -13,6 +13,7 @@ _start:
     // fd - file descript 1, 1 is the stdout
     mov rdi, 1 
     // need to put the pointer to the start of the string
+    #mov rsi, [hello_ptr]
     lea rsi, [hello_ptr] 
     // the length of the string
     mov rdx, 13 
@@ -121,7 +122,7 @@ int_format:
 push_implementation:
     # Manually push a 32-bit value onto the stack
     sub rsp, 4          # Decrement rsp by 4 bytes (size of a 32-bit value)
-    mov dword [rsp], 42 # Store the value 42 at the memory location pointed to by rsp
+    #mov dword [rsp], 42 # Store the value 42 at the memory location pointed to by rsp
     ret
     /*
         It's important to ensure proper alignment and management of the stack when manually pushing values. 

@@ -1,0 +1,33 @@
+.model flat, stdcall
+.stack 4096
+
+.data
+    num1 DWORD 10
+    num2 DWORD 20
+    result DWORD ?
+
+.code
+    main PROC
+        mov eax, num1       ; Move the value of num1 into EAX
+        add eax, num2       ; Add the value of num2 to EAX
+        mov result, eax     ; Store the result in the variable 'result'
+
+        ; Convert the result to a string
+        sub esp, 8          ; Allocate space on the stack for result and format
+        push offset result  ; Push the address of 'result' as an argument
+        push offset format  ; Push the format string as an argument
+        call printf        ; Call the printf function
+        add esp, 12         ; Clean up the stack
+
+        ; Exit the program
+        mov eax, 0          ; Return 0 to the operating system
+        ret
+    main ENDP
+
+    ; Data section for the format string
+    format db "%d", 0
+
+    ; External declaration of the printf function
+    EXTERN printf: PROC
+
+END main

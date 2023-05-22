@@ -1,0 +1,55 @@
+
+file:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+08049000 <_start>:
+ 8049000:	eb 2f                	jmp    8049031 <fn_loop>
+ 8049002:	b8 04 00 00 00       	mov    eax,0x4
+ 8049007:	bb 01 00 00 00       	mov    ebx,0x1
+ 804900c:	b9 00 a0 04 08       	mov    ecx,0x804a000
+ 8049011:	ba 12 00 00 00       	mov    edx,0x12
+ 8049016:	cd 80                	int    0x80
+ 8049018:	bb 69 00 00 00       	mov    ebx,0x69
+
+0804901d <add_again>:
+ 804901d:	83 c3 01             	add    ebx,0x1
+ 8049020:	81 fb 20 04 00 00    	cmp    ebx,0x420
+ 8049026:	7d 02                	jge    804902a <done>
+ 8049028:	eb f3                	jmp    804901d <add_again>
+
+0804902a <done>:
+ 804902a:	b8 01 00 00 00       	mov    eax,0x1
+ 804902f:	cd 80                	int    0x80
+
+08049031 <fn_loop>:
+ 8049031:	bb 01 00 00 00       	mov    ebx,0x1
+ 8049036:	b9 05 00 00 00       	mov    ecx,0x5
+
+0804903b <l1>:
+ 804903b:	d1 e3                	shl    ebx,1
+ 804903d:	49                   	dec    ecx
+ 804903e:	83 f9 00             	cmp    ecx,0x0
+ 8049041:	74 02                	je     8049045 <l2>
+ 8049043:	eb f6                	jmp    804903b <l1>
+
+08049045 <l2>:
+ 8049045:	b8 01 00 00 00       	mov    eax,0x1
+ 804904a:	cd 80                	int    0x80
+
+Disassembly of section .data:
+
+0804a000 <msg>:
+ 804a000:	48                   	dec    eax
+ 804a001:	65 6c                	gs ins BYTE PTR es:[edi],dx
+ 804a003:	6c                   	ins    BYTE PTR es:[edi],dx
+ 804a004:	6f                   	outs   dx,DWORD PTR ds:[esi]
+ 804a005:	2c 20                	sub    al,0x20
+ 804a007:	77 6f                	ja     804a078 <_end+0x64>
+ 804a009:	72 6c                	jb     804a077 <_end+0x63>
+ 804a00b:	64 5c                	fs pop esp
+ 804a00d:	6e                   	outs   dx,BYTE PTR ds:[esi]
+ 804a00e:	5c                   	pop    esp
+ 804a00f:	30 0a                	xor    BYTE PTR [edx],cl
+	...

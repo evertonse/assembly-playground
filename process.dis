@@ -1,0 +1,127 @@
+	.file	"process.c"
+	.text
+	.def	printf;	.scl	3;	.type	32;	.endef
+	.seh_proc	printf
+printf:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	pushq	%rbx
+	.seh_pushreg	%rbx
+	subq	$56, %rsp
+	.seh_stackalloc	56
+	leaq	48(%rsp), %rbp
+	.seh_setframe	%rbp, 48
+	.seh_endprologue
+	movq	%rcx, 32(%rbp)
+	movq	%rdx, 40(%rbp)
+	movq	%r8, 48(%rbp)
+	movq	%r9, 56(%rbp)
+	leaq	40(%rbp), %rax
+	movq	%rax, -16(%rbp)
+	movq	-16(%rbp), %rbx
+	movl	$1, %ecx
+	movq	__imp___acrt_iob_func(%rip), %rax
+	call	*%rax
+	movq	%rax, %rcx
+	movq	32(%rbp), %rax
+	movq	%rbx, %r8
+	movq	%rax, %rdx
+	call	__mingw_vfprintf
+	movl	%eax, -4(%rbp)
+	movl	-4(%rbp), %eax
+	addq	$56, %rsp
+	popq	%rbx
+	popq	%rbp
+	ret
+	.seh_endproc
+	.def	__main;	.scl	2;	.type	32;	.endef
+	.section .rdata,"dr"
+.LC0:
+	.ascii "Usage: %s [cmdline]\12\0"
+.LC1:
+	.ascii "CreateProcess failed (%d).\12\0"
+	.text
+	.globl	main
+	.def	main;	.scl	2;	.type	32;	.endef
+	.seh_proc	main
+main:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	subq	$224, %rsp
+	.seh_stackalloc	224
+	.seh_endprologue
+	movl	%ecx, 16(%rbp)
+	movq	%rdx, 24(%rbp)
+	call	__main
+	leaq	-112(%rbp), %rax
+	movl	$104, %r8d
+	movl	$0, %edx
+	movq	%rax, %rcx
+	call	memset
+	movl	$104, -112(%rbp)
+	leaq	-144(%rbp), %rax
+	movl	$24, %r8d
+	movl	$0, %edx
+	movq	%rax, %rcx
+	call	memset
+	cmpl	$2, 16(%rbp)
+	je	.L4
+	movq	24(%rbp), %rax
+	movq	(%rax), %rax
+	movq	%rax, %rdx
+	leaq	.LC0(%rip), %rax
+	movq	%rax, %rcx
+	call	printf
+	jmp	.L3
+.L4:
+	movq	24(%rbp), %rax
+	addq	$8, %rax
+	movq	(%rax), %rax
+	leaq	-144(%rbp), %rdx
+	movq	%rdx, 72(%rsp)
+	leaq	-112(%rbp), %rdx
+	movq	%rdx, 64(%rsp)
+	movq	$0, 56(%rsp)
+	movq	$0, 48(%rsp)
+	movl	$0, 40(%rsp)
+	movl	$0, 32(%rsp)
+	movl	$0, %r9d
+	movl	$0, %r8d
+	movq	%rax, %rdx
+	movl	$0, %ecx
+	movq	__imp_CreateProcessA(%rip), %rax
+	call	*%rax
+	testl	%eax, %eax
+	jne	.L6
+	movq	__imp_GetLastError(%rip), %rax
+	call	*%rax
+	movl	%eax, %edx
+	leaq	.LC1(%rip), %rax
+	movq	%rax, %rcx
+	call	printf
+	jmp	.L3
+.L6:
+	movq	-144(%rbp), %rax
+	movl	$-1, %edx
+	movq	%rax, %rcx
+	movq	__imp_WaitForSingleObject(%rip), %rax
+	call	*%rax
+	movq	-144(%rbp), %rax
+	movq	%rax, %rcx
+	movq	__imp_CloseHandle(%rip), %rax
+	call	*%rax
+	movq	-136(%rbp), %rax
+	movq	%rax, %rcx
+	movq	__imp_CloseHandle(%rip), %rax
+	call	*%rax
+	nop
+.L3:
+	addq	$224, %rsp
+	popq	%rbp
+	ret
+	.seh_endproc
+	.ident	"GCC: (Rev11, Built by MSYS2 project) 12.2.0"
+	.def	__mingw_vfprintf;	.scl	2;	.type	32;	.endef
+	.def	memset;	.scl	2;	.type	32;	.endef

@@ -1,0 +1,41 @@
+
+file.o:     file format pe-x86-64
+
+Contents of section .data:
+ 0000 5a46203d 20302043 46203d20 30204f46  ZF = 0 CF = 0 OF
+ 0010 203d2030 00010002 04000410 00064000   = 0..........@.
+ 0020 07800008 00010900 020a0004 0b0008    ............... 
+
+Disassembly of section .data:
+
+0000000000000000 <str_flags>:
+   0:	5a                   	pop    rdx
+   1:	46 20 3d 20 30 20 43 	rex.RX and BYTE PTR [rip+0x43203020],r15b        # 43203028 <@comp.id+0x421cba65>
+   8:	46 20 3d 20 30 20 4f 	rex.RX and BYTE PTR [rip+0x4f203020],r15b        # 4f20302f <@comp.id+0x4e1cba6c>
+   f:	46 20 3d 20 30   	rex.RX and BYTE PTR [rip+0x1003020],r15b        # 1003036 <OF_MASK+0x1003009>
+
+0000000000000014 <CF_SHIFT>:
+	...
+
+0000000000000015 <CF_MASK>:
+  15:	01 00                	add    DWORD PTR [rax],eax
+  17:	02 04 00             	add    al,BYTE PTR [rax+rax*1]
+  1a:	04 10                	add    al,0x10
+	...
+
+000000000000001d <ZF_SHIFT>:
+  1d:	06                   	(bad)
+
+000000000000001e <ZF_MASK>:
+  1e:	40 00 07             	rex add BYTE PTR [rdi],al
+  21:	80 00 08             	add    BYTE PTR [rax],0x8
+  24:	00 01                	add    BYTE PTR [rcx],al
+  26:	09 00                	or     DWORD PTR [rax],eax
+  28:	02 0a                	add    cl,BYTE PTR [rdx]
+  2a:	00 04              	add    BYTE PTR [rbx+rcx*1],al
+
+000000000000002c <OF_SHIFT>:
+  2c:	0b                 	or     eax,DWORD PTR [rax]
+
+000000000000002d <OF_MASK>:
+  2d:	00 08                	add    BYTE PTR [rax],cl

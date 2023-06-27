@@ -1,0 +1,3 @@
+/*GNU ld script*/
+OUPUT_FORMAT(elf-x86-64)
+GROUP(/mnt/d/code/assembly/src/so/lib/libmath.so.1)

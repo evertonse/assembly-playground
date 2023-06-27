@@ -1,0 +1,77 @@
+Microsoft (R) COFF/PE Dumper Version 14.29.30148.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file main.obj
+
+File Type: COFF OBJECT
+
+func3:
+  0000000000000000: 44 89 4C 24 20     mov         dword ptr [rsp+20h],r9d
+  0000000000000005: 44 89 44 24 18     mov         dword ptr [rsp+18h],r8d
+  000000000000000A: 89 54 24 10        mov         dword ptr [rsp+10h],edx
+  000000000000000E: 48 89 4C 24 08     mov         qword ptr [rsp+8],rcx
+  0000000000000013: 56                 push        rsi
+  0000000000000014: 57                 push        rdi
+  0000000000000015: 48 83 EC 28        sub         rsp,28h
+  0000000000000019: 48 8B 05 00 00 00  mov         rax,qword ptr [__security_cookie]
+                    00
+  0000000000000020: 48 33 C4           xor         rax,rsp
+  0000000000000023: 48 89 44 24 18     mov         qword ptr [rsp+18h],rax
+  0000000000000028: 48 63 44 24 48     movsxd      rax,dword ptr [rsp+48h]
+  000000000000002D: 48 89 04 24        mov         qword ptr [rsp],rax
+  0000000000000031: 48 63 44 24 50     movsxd      rax,dword ptr [rsp+50h]
+  0000000000000036: 48 89 44 24 08     mov         qword ptr [rsp+8],rax
+  000000000000003B: 48 63 44 24 58     movsxd      rax,dword ptr [rsp+58h]
+  0000000000000040: 48 89 44 24 10     mov         qword ptr [rsp+10h],rax
+  0000000000000045: 48 8D 04 24        lea         rax,[rsp]
+  0000000000000049: 48 8B 7C 24 40     mov         rdi,qword ptr [rsp+40h]
+  000000000000004E: 48 8B F0           mov         rsi,rax
+  0000000000000051: B9 18 00 00 00     mov         ecx,18h
+  0000000000000056: F3 A4              rep movs    byte ptr [rdi],byte ptr [rsi]
+  0000000000000058: 48 8B 44 24 40     mov         rax,qword ptr [rsp+40h]
+  000000000000005D: 48 8B 4C 24 18     mov         rcx,qword ptr [rsp+18h]
+  0000000000000062: 48 33 CC           xor         rcx,rsp
+  0000000000000065: E8 00 00 00 00     call        __security_check_cookie
+  000000000000006A: 48 83 C4 28        add         rsp,28h
+  000000000000006E: 5F                 pop         rdi
+  000000000000006F: 5E                 pop         rsi
+  0000000000000070: C3                 ret
+  0000000000000071: CC                 int         3
+  0000000000000072: CC                 int         3
+  0000000000000073: CC                 int         3
+  0000000000000074: CC                 int         3
+  0000000000000075: CC                 int         3
+  0000000000000076: CC                 int         3
+  0000000000000077: CC                 int         3
+  0000000000000078: CC                 int         3
+  0000000000000079: CC                 int         3
+  000000000000007A: CC                 int         3
+  000000000000007B: CC                 int         3
+  000000000000007C: CC                 int         3
+  000000000000007D: CC                 int         3
+  000000000000007E: CC                 int         3
+  000000000000007F: CC                 int         3
+main:
+  0000000000000080: 48 83 EC 58        sub         rsp,58h
+  0000000000000084: C7 44 24 20 07 00  mov         dword ptr [rsp+20h],7
+                    00 00
+  000000000000008C: 41 B9 24 00 00 00  mov         r9d,24h
+  0000000000000092: 41 B8 A4 01 00 00  mov         r8d,1A4h
+  0000000000000098: BA 45 00 00 00     mov         edx,45h
+  000000000000009D: 48 8D 4C 24 30     lea         rcx,[rsp+30h]
+  00000000000000A2: E8 00 00 00 00     call        func3
+  00000000000000A7: 33 C0              xor         eax,eax
+  00000000000000A9: 48 83 C4 58        add         rsp,58h
+  00000000000000AD: C3                 ret
+
+  Summary
+
+           4 .bss
+          40 .chks64
+          70 .debug$S
+          2F .drectve
+          18 .pdata
+          AE .text$mn
+          10 .voltbl
+          1C .xdata

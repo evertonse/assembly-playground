@@ -1,0 +1,39 @@
+
+project.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	55                   	push   rbp
+   1:	48 89 e5             	mov    rbp,rsp
+   4:	48 83 ec 20          	sub    rsp,0x20
+   8:	c7 45 ec 00 00 00 00 	mov    DWORD PTR [rbp-0x14],0x0
+   f:	89 7d f8             	mov    DWORD PTR [rbp-0x8],edi
+  12:	48 89 75 f0          	mov    QWORD PTR [rbp-0x10],rsi
+  16:	8b 75 f8             	mov    esi,DWORD PTR [rbp-0x8]
+  19:	48 bf 00 00 00 00 00 	movabs rdi,0x0
+  20:	00 00 00 
+  23:	b0 00                	mov    al,0x0
+  25:	e8 00 00 00 00       	call   2a <main+0x2a>
+  2a:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+  31:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  34:	3b 45 f8             	cmp    eax,DWORD PTR [rbp-0x8]
+  37:	73 2d                	jae    66 <main+0x66>
+  39:	8b 75 fc             	mov    esi,DWORD PTR [rbp-0x4]
+  3c:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  3f:	48 8b 45 f0          	mov    rax,QWORD PTR [rbp-0x10]
+  43:	8b 4d fc             	mov    ecx,DWORD PTR [rbp-0x4]
+  46:	48 8b 0c c8          	mov    rcx,QWORD PTR [rax+rcx*8]
+  4a:	48 bf 00 00 00 00 00 	movabs rdi,0x0
+  51:	00 00 00 
+  54:	b0 00                	mov    al,0x0
+  56:	e8 00 00 00 00       	call   5b <main+0x5b>
+  5b:	8b 45 fc             	mov    eax,DWORD PTR [rbp-0x4]
+  5e:	83 c0 01             	add    eax,0x1
+  61:	89 45 fc             	mov    DWORD PTR [rbp-0x4],eax
+  64:	eb cb                	jmp    31 <main+0x31>
+  66:	31 c0                	xor    eax,eax
+  68:	48 83 c4 20          	add    rsp,0x20
+  6c:	5d                   	pop    rbp
+  6d:	c3                   	ret

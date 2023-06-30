@@ -11,23 +11,49 @@
 
 int a = 'd';
 // Funcao principal
+
+void bubbleSort(int arr[], int n) {
+    int i, j;
+    for (i = 0; i < n-1; i++) {
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
 int main(int argc, char* argv[]) {
-	// Exibindo a quantidade de argumentos
-	printf("Quantidade de argumentos (argc): %i\n", argc);
-	// Iterando sobre o(s) argumento(s) do programa
-	for(uint32_t i = 0; i < argc; i++) {
-		// Mostrando o argumento i
-		printf("Argumento %i (argv[%i]): %s\n", i, i, argv[i]);
-	}
-	// Abrindo os arquivos com as permissoes corretas
-	//FILE* input = fopen(argv[1], "r");
-	//FILE* output = fopen(argv[2], "w");
-	// .
-	// .
-	// .
-	// Fechando os arquivos
-	//fclose(input);
-	//fclose(output);
-	// Finalizando programa
-	return 0;
+    FILE *file;
+    int numbers[100];
+    int count = 0;
+
+    // Open the file for reading
+    file = fopen("numbers.txt", "r");
+    if (file == NULL) {
+        printf("Failed to open the file.\n");
+        return 1;
+    }
+
+    // Read numbers from the file
+    while (fscanf(file, "%d", &numbers[count]) == 1) {
+        count++;
+    }
+
+    // Close the file
+    fclose(file);
+
+    // Sort the numbers using bubble sort
+    bubbleSort(numbers, count);
+
+    // Display the sorted numbers
+    printf("Sorted numbers:\n");
+    for (int i = 0; i < count; i++) {
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
+
+    return 0;
 }

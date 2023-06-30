@@ -28,44 +28,61 @@ void bubble_sort(int arr[], int n) {
     }
 }
 
-int main(int argc, char* argv[]) {
-    FILE *input, *output;
-    int *numbers;
-    int count = 0;
 
-    input = fopen(argv[1], "r");
+void go_sort();
+FILE *input, *output;
+int main(int argc, char* argv[]) {
     if (input == NULL) {
-        printf("Failed to open the input.\n");
+    input = fopen(argv[1], "r");
+        printf("Failed to open the input %s\n",argv[1]);
         return 1;
     }
 
     output = fopen(argv[2], "w");
     if (output == NULL) {
-        printf("Failed to open the output.\n");
+        printf("Failed to open the output %s.\n", argv[2]);
         return 1;
     }
 
+    int n_array = 0;
+    if (fscanf(input, "%d\n", &n_array) != 1) {
+       printf("Invalid input format.\n");
+       return 1;
+    }
+    for (size_t i = 0; i < n_array; i++) {
+        go_sort();
+    }
+
+    fclose(input);
+    fclose(output);
+
+    return 1;
+}
+
+void go_sort() {
+
+    int *numbers;
+    int count = 0;
     // Read the first number in the input as the size of the array
-      if (fscanf(input, "%d\n", &count) != 1) {
+     if (fscanf(input, "%d\n", &count) != 1) {
         printf("Invalid input format.\n");
-        return 1;
+        exit(1);
     }
 
     // Allocate memory for the array dynamically
     numbers = (int*)malloc(count * sizeof(int));
     if (numbers == NULL) {
         printf("Memory allocation failed.\n");
-        return 1;
+        exit(1);
     }
 
     // Read numbers from the input
     for (int i = 0; i < count; i++) {
         if (fscanf(input, "%d", &numbers[i]) != 1) {
             printf("Invalid input format.\n");
-            return 1;
+            exit(1);
         }
     }
-
 
     // Sort the numbers using bubble sort
     bubble_sort(numbers, count);
@@ -74,14 +91,11 @@ int main(int argc, char* argv[]) {
     fprintf(output, "Sorted numbers:\n");
     for (int i = 0; i < count; i++) {
         fprintf(output, "%d ", numbers[i]);
+        printf("%d ", numbers[i]);
     }
     printf("\n");
 
     // Free the dynamically allocated memory
     free(numbers);
     // Close the input
-    fclose(input);
-    fclose(output);
-
-    return 0;
 }

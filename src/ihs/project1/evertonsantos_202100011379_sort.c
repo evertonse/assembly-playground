@@ -29,11 +29,13 @@ void bubble_sort(int arr[], int n) {
 }
 
 
-void go_sort();
+void go_sort(int);
+
 FILE *input, *output;
+
 int main(int argc, char* argv[]) {
-    if (input == NULL) {
     input = fopen(argv[1], "r");
+    if (input == NULL) {
         printf("Failed to open the input %s\n",argv[1]);
         return 1;
     }
@@ -50,7 +52,7 @@ int main(int argc, char* argv[]) {
        return 1;
     }
     for (size_t i = 0; i < n_array; i++) {
-        go_sort();
+        go_sort(i);
     }
 
     fclose(input);
@@ -59,7 +61,7 @@ int main(int argc, char* argv[]) {
     return 1;
 }
 
-void go_sort() {
+void go_sort(int run) {
 
     int *numbers;
     int count = 0;
@@ -77,22 +79,30 @@ void go_sort() {
     }
 
     // Read numbers from the input
+
+    printf("################################\n");
+    printf("--------------INPUT---------------\n");
+    printf("[%d] ", run);
     for (int i = 0; i < count; i++) {
         if (fscanf(input, "%d", &numbers[i]) != 1) {
             printf("Invalid input format.\n");
             exit(1);
         }
+        printf("%d ", numbers[i]);
     }
-
+    printf("\n");
     // Sort the numbers using bubble sort
     bubble_sort(numbers, count);
 
+    printf("---------------OUTPUT---------------\n");
     // Display the sorted numbers
-    fprintf(output, "Sorted numbers:\n");
+    fprintf(output, "[%d] ", run);
+    printf("[%d] ", run);
     for (int i = 0; i < count; i++) {
         fprintf(output, "%d ", numbers[i]);
         printf("%d ", numbers[i]);
     }
+    fprintf(output, "\n");
     printf("\n");
 
     // Free the dynamically allocated memory

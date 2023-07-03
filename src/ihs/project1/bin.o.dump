@@ -153,50 +153,54 @@ Disassembly of section .text.startup:
   23:	e8 00 00 00 00       	call   28 <main+0x28>
   28:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 2f <main+0x2f>
   2f:	48 85 c0             	test   %rax,%rax
-  32:	75 0d                	jne    41 <main+0x41>
+  32:	75 1a                	jne    4e <main+0x4e>
   34:	48 8b 73 08          	mov    0x8(%rbx),%rsi
   38:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3f <main+0x3f>
-  3f:	eb 27                	jmp    68 <main+0x68>
-  41:	48 8b 7b 10          	mov    0x10(%rbx),%rdi
-  45:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 4c <main+0x4c>
-  4c:	e8 00 00 00 00       	call   51 <main+0x51>
-  51:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 58 <main+0x58>
-  58:	48 85 c0             	test   %rax,%rax
-  5b:	75 12                	jne    6f <main+0x6f>
-  5d:	48 8b 73 10          	mov    0x10(%rbx),%rsi
-  61:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 68 <main+0x68>
-  68:	e8 00 00 00 00       	call   6d <main+0x6d>
-  6d:	eb 62                	jmp    d1 <main+0xd1>
-  6f:	31 f6                	xor    %esi,%esi
-  71:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 78 <main+0x78>
-  78:	31 c0                	xor    %eax,%eax
-  7a:	48 8d 54 24 04       	lea    0x4(%rsp),%rdx
-  7f:	89 74 24 04          	mov    %esi,0x4(%rsp)
-  83:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 8a <main+0x8a>
-  8a:	31 db                	xor    %ebx,%ebx
-  8c:	e8 00 00 00 00       	call   91 <main+0x91>
-  91:	ff c8                	dec    %eax
-  93:	74 0e                	je     a3 <main+0xa3>
-  95:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 9c <main+0x9c>
-  9c:	e8 00 00 00 00       	call   a1 <main+0xa1>
-  a1:	eb 2e                	jmp    d1 <main+0xd1>
-  a3:	48 63 44 24 04       	movslq 0x4(%rsp),%rax
-  a8:	48 39 c3             	cmp    %rax,%rbx
-  ab:	73 0c                	jae    b9 <main+0xb9>
-  ad:	89 df                	mov    %ebx,%edi
-  af:	48 ff c3             	inc    %rbx
-  b2:	e8 00 00 00 00       	call   b7 <main+0xb7>
-  b7:	eb ea                	jmp    a3 <main+0xa3>
-  b9:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # c0 <main+0xc0>
-  c0:	e8 00 00 00 00       	call   c5 <main+0xc5>
-  c5:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # cc <main+0xcc>
-  cc:	e8 00 00 00 00       	call   d1 <main+0xd1>
-  d1:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
-  d6:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
-  dd:	00 00 
-  df:	74 05                	je     e6 <main+0xe6>
-  e1:	e8 00 00 00 00       	call   e6 <main+0xe6>
-  e6:	48 83 c4 10          	add    $0x10,%rsp
-  ea:	b8 01 00 00 00       	mov    $0x1,%eax
-  ef:	5b                   	pop    %rbx
-  f0:	c3                   	ret
+  3f:	e8 00 00 00 00       	call   44 <main+0x44>
+  44:	b8 18 00 00 00       	mov    $0x18,%eax
+  49:	e9 9c 00 00 00       	jmp    ea <main+0xea>
+  4e:	48 8b 7b 10          	mov    0x10(%rbx),%rdi
+  52:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 59 <main+0x59>
+  59:	e8 00 00 00 00       	call   5e <main+0x5e>
+  5e:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 65 <main+0x65>
+  65:	48 85 c0             	test   %rax,%rax
+  68:	75 17                	jne    81 <main+0x81>
+  6a:	48 8b 73 10          	mov    0x10(%rbx),%rsi
+  6e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 75 <main+0x75>
+  75:	e8 00 00 00 00       	call   7a <main+0x7a>
+  7a:	b8 a4 01 00 00       	mov    $0x1a4,%eax
+  7f:	eb 69                	jmp    ea <main+0xea>
+  81:	31 f6                	xor    %esi,%esi
+  83:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 8a <main+0x8a>
+  8a:	31 c0                	xor    %eax,%eax
+  8c:	48 8d 54 24 04       	lea    0x4(%rsp),%rdx
+  91:	89 74 24 04          	mov    %esi,0x4(%rsp)
+  95:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 9c <main+0x9c>
+  9c:	31 db                	xor    %ebx,%ebx
+  9e:	e8 00 00 00 00       	call   a3 <main+0xa3>
+  a3:	ff c8                	dec    %eax
+  a5:	74 13                	je     ba <main+0xba>
+  a7:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # ae <main+0xae>
+  ae:	e8 00 00 00 00       	call   b3 <main+0xb3>
+  b3:	b8 45 00 00 00       	mov    $0x45,%eax
+  b8:	eb 30                	jmp    ea <main+0xea>
+  ba:	48 63 44 24 04       	movslq 0x4(%rsp),%rax
+  bf:	48 39 c3             	cmp    %rax,%rbx
+  c2:	73 0c                	jae    d0 <main+0xd0>
+  c4:	89 df                	mov    %ebx,%edi
+  c6:	48 ff c3             	inc    %rbx
+  c9:	e8 00 00 00 00       	call   ce <main+0xce>
+  ce:	eb ea                	jmp    ba <main+0xba>
+  d0:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # d7 <main+0xd7>
+  d7:	e8 00 00 00 00       	call   dc <main+0xdc>
+  dc:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # e3 <main+0xe3>
+  e3:	e8 00 00 00 00       	call   e8 <main+0xe8>
+  e8:	31 c0                	xor    %eax,%eax
+  ea:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
+  ef:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  f6:	00 00 
+  f8:	74 05                	je     ff <main+0xff>
+  fa:	e8 00 00 00 00       	call   ff <main+0xff>
+  ff:	48 83 c4 10          	add    $0x10,%rsp
+ 103:	5b                   	pop    %rbx
+ 104:	c3                   	ret

@@ -119,7 +119,6 @@ go_sort:
 	mov	rdi, r13
 	xor	eax, eax
 	call	printf@PLT
-#########
 .L13:
 	cmp	DWORD PTR 4[rsp], r14d
 	jle	.L22

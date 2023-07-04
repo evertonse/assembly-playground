@@ -90,7 +90,7 @@ void go_sort(int run) {
   // Sort the numbers using bubble sort
   bubble_sort(numbers, count);
 
-  printf("---------------OUTPUT---------------\n");
+  puts("---------------OUTPUT---------------\n");
   // Display the sorted numbers
   fprintf(output, "[%d] ", run);
   printf("[%d] ", run);
@@ -100,7 +100,6 @@ void go_sort(int run) {
   }
   fprintf(output, "\n");
   printf("\n");
-
   // Free the dynamically allocated memory
   free(numbers);
   // Close the input

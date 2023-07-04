@@ -60,7 +60,13 @@ foutput:
 .global	go_sort
 
 go_sort:
-  push rbp
+	pop	rbx
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+  pop rbp
+#----------------#
   mov rbp, rsp
   sub rsp, 16 #8+4 # space for an int and a ^int (integer pointer)
   mov dword ptr [rbp-16], rdi # r9d = run : int 
@@ -139,63 +145,74 @@ go_sort:
 	call	putchar@PLT
 
 	mov	rdi, qword ptr [rpb-12] #: 1º numbers: ^int
-	mov	esi, dword ptr [rbp-4] #: 2º count: int
+	mov	esi, dword ptr [rbp-4]  #: 2º count: int
 	call	bubble_sort
 
-	lea	rdi, .LC8[rip]
+#: begin puts("---------------OUTPUT---------------\n");
+	lea	rdi, [rip + foutput]
 	call	puts@PLT
-	mov	rdi, QWORD PTR output[rip]
-	mov	edx, ebp
-	xor	eax, eax
-	mov	rsi, r13
-	call	fprintf@PLT
-	mov	esi, ebp
-	mov	rdi, r13
-	xor	eax, eax
-	call	printf@PLT
-	xor	ebp, ebp
-.L16:
-	mov	rdi, QWORD PTR output[rip]
-	cmp	DWORD PTR 4[rsp], ebp
-	jle	.L23
-	mov	edx, DWORD PTR [rbx+rbp*4]
-	mov	rsi, r12
+#: end
+
+#: begin fprintf
+	mov	rdi, qword ptr [rip + output]
+  lea rsi, [rip + fbrack_digit]
+	mov	edx, dword ptr [rbp - 16]
 	xor	eax, eax
 	call	fprintf@PLT
-	mov	esi, DWORD PTR [rbx+rbp*4]
-	mov	rdi, r12
+#: end 
+
+#: begin printf 
+  lea rdi, [rip + fbrack_digit]
+	mov	esi, dword ptr [rbp - 16]
 	xor	eax, eax
-	inc	rbp
 	call	printf@PLT
-	jmp	.L16
-.L23:
-	mov	rsi, rdi
-	mov	edi, 10
-	call	fputc@PLT
+#: end
+
+  xor r11d, r11d # i = 0
+.for_i_to_count_output:
+	cmp	dword ptr [rbp-4], r11d
+	jle	.for_i_to_count_output_done
+
+#: begin fprintf
+	mov	rdi, qword ptr [rip + output]
+	lea	rsi, [rip + fdigit3]
+	mov	edx, dword ptr [r11d*4 + rbp - 12]
+	xor	eax, eax
+	call fprintf@PLT
+#: end
+
+#: begin printf
+	lea	rdi, [rip + fdigit3]
+	mov	esi, dword ptr [r11d*4 + rbp - 12]
+	xor	eax, eax
+	call printf@PLT
+#: end
+  inc	r11d
+	jmp	.for_i_to_count_output
+
+.for_i_to_count_output_done:
+
+  mov	edi, 10
+	mov	rsi,qword ptr [rip + output]
+	call	fputc@PLT # fputc (c :int, stream : ^FILE) -> int ;
+
 	mov	edi, 10
 	call	putchar@PLT
-	mov	rax, QWORD PTR 8[rsp]
-	sub	rax, QWORD PTR fs:40
-	je	.L18
-	call	__stack_chk_fail@PLT
-.L18:
-	add	rsp, 24
+
+	add	rsp, 16
 	
-	mov	rdi, rbx
-	pop	rbx
-	
-	pop	rbp
-	
-	pop	r12
-	
-	pop	r13
-	
-	pop	r14
-	
-	pop	r15
-	
+	mov rdi, qword ptr [rbp-12]  
 	jmp	free@PLT
-.LFE8:
+
+#: begin prologue
+	pop	rbx
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+  pop rbp
+  ret
+#: end
 	
 .section	.rodata
 str_read:

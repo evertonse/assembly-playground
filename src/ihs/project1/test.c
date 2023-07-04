@@ -12,6 +12,8 @@ extern void test(void) {
 }
 
 int main(int argc, char *argv[]) {
+  int *numbers;
+  free(numbers);
   test();
   return 0;
 }

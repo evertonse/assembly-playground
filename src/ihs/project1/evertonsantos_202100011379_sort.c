@@ -76,8 +76,8 @@ void go_sort(int run) {
 
   // Read numbers from the input
 
-  printf("################################\n");
-  printf("--------------INPUT---------------\n");
+  puts("################################\n");
+  puts("--------------INPUT---------------\n");
   printf("[%d] ", run);
   for (int i = 0; i < count; i++) {
     if (fscanf(input, "%d", &numbers[i]) != 1) {

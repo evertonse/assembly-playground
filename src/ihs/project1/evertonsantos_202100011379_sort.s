@@ -63,9 +63,11 @@ foutput:
 go_sort:
   push rbp
   mov rbp, rsp
-  sub rsp, 12 #8+4 # space for an int and a ^int (integer pointer)
-  # rbp-4 = int counter
-  # rbp-12 = int*numbers
+  sub rsp, 16 #8+4 # space for an int and a ^int (integer pointer)
+  mov dword ptr [rbp-16], rdi # r9d = run : int 
+  # rbp-16 = int  num
+  # rbp-4  = int  counter
+  # rbp-12 = int* numbers
   #;;;;;;;;;;#
   mov	rdi, input # fprintf 1º input: *File
   mov rsi, fdigit1 # fprintf 2º formated string
@@ -89,20 +91,29 @@ go_sort:
 	mov	edi, 1
 	call	exit@PLT
 .malloc_success:
-	lea	rdi, .LC3[rip]
-	lea	r13, .LC5[rip]
+  mov qword ptr [rbp-12], rax # number = return of malloc
+	lea	rdi, [fseparator]
+	call	puts@PLT
+	lea	rdi, [finput]
+	call	puts@PLT
+
 	mov	r12, rbx
 	xor	r14d, r14d
-	call	puts@PLT
 	lea	rdi, .LC4[rip]
 	lea	r15, .LC6[rip]
 	call	puts@PLT
-	mov	esi, ebp
-	mov	rdi, r13
+
+#: printf begin 
+	mov	esi, dword ptr [rbp-16] #
+	lea	rdi, [fbrack_digit]
 	xor	eax, eax
 	call	printf@PLT
+#: end
+
+
+#: for i .. count
 .L13:
-	cmp	DWORD PTR 4[rsp], r14d
+	cmp	DWORD PTR [rbp-4], r14d
 	jle	.L22
 	mov	rdi, QWORD PTR input[rip]
 	xor	eax, eax
@@ -180,14 +191,14 @@ go_sort:
 	jmp	free@PLT
 .LFE8:
 	
-	.section	.data.str1.1
-.LC9:
+.section	.rodata
+str_read:
 	.string	"r"
-.LC10:
+str_failed_input:
 	.string	"Failed to open the input %s\n"
-.LC11:
+str_write:
 	.string	"w"
-.LC12:
+str_failed_output:
 	.string	"Failed to open the output %s.\n"
 
 

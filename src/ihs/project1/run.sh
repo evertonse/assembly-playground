@@ -8,4 +8,4 @@ gcc -Wall -Os -S -masm=intel evertonsantos_202100011379_sort.c -o evertonsantos_
 # alias objump='objdump -M intel'
 objdump -M intel -d bin > bin.dump
 objdump -M intel -d bin.o > bin.o.dump
-gcc -Wall -O3 evertonsantos_202100011379_sort.s -o work.bin
+gcc -Wall -O3 -g evertonsantos_202100011379_sort.s -o work.bin && ./work.bin sort.input sort.output

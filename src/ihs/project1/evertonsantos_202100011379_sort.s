@@ -60,24 +60,34 @@ foutput:
 .global	go_sort
 
 go_sort:
-	pop	rbx
-	pop	r12
-	pop	r13
-	pop	r14
-	pop	r15
-  pop rbp
+
+  push rbp
 #----------------#
+
+	push  rbx
+	push  r12
+	push  r13
+	push  r14
+	push  r15
   mov rbp, rsp
   sub rsp, 16 #8+4 # space for an int and a ^int (integer pointer)
-  mov dword ptr [rbp-16], edi # r9d = run : int 
+  mov dword ptr [rbp - 16], edi # r9d = run : int 
   # rbp-16 = int  rum 
   # rbp-4  = int  count
   # rbp-12 = int* numbers
   #;;;;;;;;;;#
-  lea rdi, [rip + input] # fprintf 1º input: *File
+
+	mov	dword ptr [rbp - 4], 0
+;
+  mov rdi, qword ptr [rip + input] # fprintf 1º input: *File
   lea rsi, [rip + fdigit1] # fprintf 2º formated string
   lea rdx, [rbp-4] # frprintf 3º load &counter in rdx 
+  xor eax, eax # AL = 0
+
+  sub rsp, 8 
 	call	__isoc99_fscanf@PLT
+  add rsp, 8 
+
 	cmp eax, 1
 	je	.fscanf_ok
 .fscanf_error:
@@ -119,12 +129,16 @@ go_sort:
 	cmp	DWORD PTR [rbp-4], r14d #: cmp count with count with j 
 	jle	.for_i_to_count_done    #: if count <= i === ~(i < count) 
 #: fscanf begin
-	mov	rdi, QWORD PTR [rip + input]
+	mov	rdi, qword ptr [rip + input]
 
 	lea rdx, qword ptr [rbp-12 + 4*r14] #: &number[i]
 	lea	rsi, qword ptr [rip + fdigit2]
   xor	eax, eax #: variadic function has to say how many vector reg is using in reg AL 
+
+sub rsp, 8
 	call	__isoc99_fscanf@PLT
+add rsp, 8
+
 	cmp eax, 1 #: if (fscanf(input, "%d", &numbers[i]) != 1) {
 	jne	.fscanf_error
 
@@ -197,7 +211,7 @@ go_sort:
 	add	rsp, 16
 	
 	mov rdi, qword ptr [rbp-12]  
-	jmp	free@PLT
+	#call free@PLT
 
 #: begin prologue
 	pop	rbx
@@ -228,15 +242,15 @@ main:
 	sub	rsp, 16
 
 #:begin fopen	
-	mov	rdi, QWORD PTR 8[rsi]
+	mov	rdi, qword ptr [rsi+8]
 	lea	rsi, [rip + str_read]
-	mov	rax, QWORD PTR fs:40
-	mov	QWORD PTR 8[rsp], rax
+	mov	rax, QWORD PTR fs:40 # @why
+	mov	qword ptr [rsp+8], rax
 	xor	eax, eax
 	call	fopen@PLT
 #: end
 
-	mov	QWORD PTR input[rip], rax
+	mov	QWORD PTR [rip + input], rax
 	test	rax, rax
 	jne	.L25
 

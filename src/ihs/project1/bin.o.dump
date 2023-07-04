@@ -136,7 +136,7 @@ Disassembly of section .text:
  1ce:	41 5d                	pop    r13
  1d0:	41 5e                	pop    r14
  1d2:	41 5f                	pop    r15
- 1d4:	e9 00 00 00 00       	jmp    1d9 <.LC12+0x10c>
+ 1d4:	e9 00 00 00 00       	jmp    1d9 <.LC12+0x10b>
 
 Disassembly of section .text.startup:
 

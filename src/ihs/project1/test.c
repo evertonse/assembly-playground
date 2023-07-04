@@ -12,7 +12,10 @@ extern void test(void) {
 }
 
 int main(int argc, char *argv[]) {
+  int a = 2;
+  int i = 3;
   int *numbers;
+  printf("%d", (int)&numbers[i]);
   free(numbers);
   test();
   return 0;

@@ -27,6 +27,10 @@ test:
 	.cfi_endproc
 .LFE6:
 	.size	test, .-test
+	.section	.rodata
+.LC1:
+	.string	"%d"
+	.text
 	.globl	main
 	.type	main, @function
 main:
@@ -40,6 +44,18 @@ main:
 	sub	rsp, 32
 	mov	DWORD PTR -20[rbp], edi
 	mov	QWORD PTR -32[rbp], rsi
+	mov	DWORD PTR -16[rbp], 2
+	mov	DWORD PTR -12[rbp], 3
+	mov	eax, DWORD PTR -12[rbp]
+	cdqe
+	lea	rdx, 0[0+rax*4]
+	mov	rax, QWORD PTR -8[rbp]
+	add	rax, rdx
+	mov	esi, eax
+	lea	rax, .LC1[rip]
+	mov	rdi, rax
+	mov	eax, 0
+	call	printf@PLT
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rdi, rax
 	call	free@PLT

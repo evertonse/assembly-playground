@@ -52,7 +52,7 @@ bubble_sort:
 .LC7:
 	.string	"%d "
 .LC8:
-	.string	"---------------OUTPUT---------------"
+	.string	"---------------OUTPUT---------------\n"
 	.text
 	.globl	go_sort
 	.type	go_sort, @function

@@ -36,7 +36,7 @@ bubble_sort: # bubble_sort = fn(arr: *int, int: n: int), edi has the 'arr' point
 	ret
 	
 
-.section	.data
+.section	.rodata
 fdigit1:
 	.string	"%d\n"
 finvalid:
@@ -69,19 +69,19 @@ go_sort:
 #----------------#
   mov rbp, rsp
   sub rsp, 16 #8+4 # space for an int and a ^int (integer pointer)
-  mov dword ptr [rbp-16], rdi # r9d = run : int 
+  mov dword ptr [rbp-16], edi # r9d = run : int 
   # rbp-16 = int  rum 
   # rbp-4  = int  count
   # rbp-12 = int* numbers
   #;;;;;;;;;;#
-  mov	rdi, input # fprintf 1º input: *File
-  mov rsi, fdigit1 # fprintf 2º formated string
+  lea rdi, [rip + input] # fprintf 1º input: *File
+  lea rsi, [rip + fdigit1] # fprintf 2º formated string
   lea rdx, [rbp-4] # frprintf 3º load &counter in rdx 
 	call	__isoc99_fscanf@PLT
 	cmp eax, 1
 	je	.fscanf_ok
 .fscanf_error:
-	lea	rdi, [finvalid]
+	lea	rdi, [rip + finvalid]
 	jmp	.puts_and_leave
 .fscanf_ok:
 #: malloc begin
@@ -92,26 +92,20 @@ go_sort:
 
 	cmp rax, 0 # check if malloc returned null
 	jne	.malloc_success
-	lea	rdi, [fmalloc_failed]
+	lea	rdi, [rip + fmalloc_failed]
 .puts_and_leave:
 	call	puts@PLT
 	mov	edi, 1
 	call	exit@PLT
 .malloc_success:
   mov qword ptr [rbp-12], rax # number = return of malloc
-	lea	rdi, [fseparator]
+	lea	rdi, [rip + fseparator]
 	call	puts@PLT
-	lea	rdi, [finput]
-	call	puts@PLT
-
-	mov	r12, rbx
-	xor	r14d, r14d
-	lea	rdi, .LC4[rip]
-	lea	r15, .LC6[rip]
+	lea	rdi, [rip + finput]
 	call	puts@PLT
 
 #: printf begin 
-	lea	rdi, [fbrack_digit]
+	lea	rdi, [rip + fbrack_digit]
 	mov	esi, dword ptr [rbp-16] # run
 	xor	eax, eax
 	call	printf@PLT
@@ -125,16 +119,17 @@ go_sort:
 	cmp	DWORD PTR [rbp-4], r14d #: cmp count with count with j 
 	jle	.for_i_to_count_done    #: if count <= i === ~(i < count) 
 #: fscanf begin
-	mov	rdi, QWORD PTR [input]
-	xor	eax, eax #: variadic function has to say how many vector reg is using in reg AL 
-	lea rdx, dword ptr [rbp-12 + 4*r14d] #: &number[i]
-	lea	rsi, qword ptr [fdigit2]
+	mov	rdi, QWORD PTR [rip + input]
+
+	lea rdx, qword ptr [rbp-12 + 4*r14] #: &number[i]
+	lea	rsi, qword ptr [rip + fdigit2]
+  xor	eax, eax #: variadic function has to say how many vector reg is using in reg AL 
 	call	__isoc99_fscanf@PLT
 	cmp eax, 1 #: if (fscanf(input, "%d", &numbers[i]) != 1) {
 	jne	.fscanf_error
 
-	lea	rdi, [fdigit3]
-	mov	esi, DWORD PTR [rbp-12 + 4*r14d] #: numbers[i]
+	lea	rdi, [rip + fdigit3]
+	mov	esi, DWORD PTR [rbp-12 + 4*r14] #: numbers[i]
 	xor	eax, eax #: zeros everything else, but eve so it's no necessary because we only need AL to be 0
   call	printf@PLT
 	inc	r14d
@@ -144,7 +139,7 @@ go_sort:
 	mov	edi, 10 #: \n has opcode 10, so fine
 	call	putchar@PLT
 
-	mov	rdi, qword ptr [rpb-12] #: 1º numbers: ^int
+	mov	rdi, qword ptr [rbp-12] #: 1º numbers: ^int
 	mov	esi, dword ptr [rbp-4]  #: 2º count: int
 	call	bubble_sort
 
@@ -176,14 +171,14 @@ go_sort:
 #: begin fprintf
 	mov	rdi, qword ptr [rip + output]
 	lea	rsi, [rip + fdigit3]
-	mov	edx, dword ptr [r11d*4 + rbp - 12]
+	mov	edx, dword ptr [r11*4 + rbp - 12]
 	xor	eax, eax
 	call fprintf@PLT
 #: end
 
 #: begin printf
 	lea	rdi, [rip + fdigit3]
-	mov	esi, dword ptr [r11d*4 + rbp - 12]
+	mov	esi, dword ptr [r11*4 + rbp - 12]
 	xor	eax, eax
 	call printf@PLT
 #: end
@@ -231,43 +226,51 @@ main:
 	push	rbx
 	mov	rbx, rsi
 	sub	rsp, 16
-	
+
+#:begin fopen	
 	mov	rdi, QWORD PTR 8[rsi]
-	lea	rsi, .LC9[rip]
+	lea	rsi, [rip + str_read]
 	mov	rax, QWORD PTR fs:40
 	mov	QWORD PTR 8[rsp], rax
 	xor	eax, eax
 	call	fopen@PLT
+#: end
+
 	mov	QWORD PTR input[rip], rax
 	test	rax, rax
 	jne	.L25
+
 	mov	rsi, QWORD PTR 8[rbx]
-	lea	rdi, .LC10[rip]
+	lea	rdi, str_failed_input[rip]
 	jmp	.L35
 .L25:
 	mov	rdi, QWORD PTR 16[rbx]
-	lea	rsi, .LC11[rip]
+	lea	rsi, [rip + str_write]
 	call	fopen@PLT
 	mov	QWORD PTR output[rip], rax
 	test	rax, rax
 	jne	.L27
+#: begin printf
 	mov	rsi, QWORD PTR 16[rbx]
-	lea	rdi, .LC12[rip]
+	lea	rdi, str_failed_output[rip]
 .L35:
 	call	printf@PLT
+#: end
+
 	jmp	.L26
+
 .L27:
 	xor	esi, esi
 	mov	rdi, QWORD PTR input[rip]
 	xor	eax, eax
-	lea	rdx, 4[rsp]
-	mov	DWORD PTR 4[rsp], esi
-	lea	rsi, .LC0[rip]
+	lea	rdx, [rsp + 4]
+	mov	dword ptr [rsp + 4], esi
+	lea	rsi, fdigit1[rip]
 	xor	ebx, ebx
 	call	__isoc99_fscanf@PLT
 	dec	eax
 	je	.L28
-	lea	rdi, .LC1[rip]
+	lea	rdi, finvalid[rip]
 	call	puts@PLT
 	jmp	.L26
 .L28:

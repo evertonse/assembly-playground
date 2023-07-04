@@ -21,7 +21,6 @@ bubble_sort: # bubble_sort = fn(arr: *int, int: n: int), edi has the 'arr' point
 	mov	r9d, DWORD PTR [0 + rdi + rax*4]    # r9 = arr[j]
 	mov	r8d, DWORD PTR [4 + rdi + rax*4]  # r8 = arr[j+1]
 	#mov	r8d, DWORD PTR 4[rdi+rax*4]   # Why is this also valid? ? what if 4[exp]
-	#mov	r8d, DWORD PTR 4[rdi+rax*4]   # Why is this also valid? ? what if 4[exp]
 	cmp	r9d, r8d
 	jle	.j_dont_swap # if arr[j] > arr[j+1] jump l3
 # .swap r9 and r8
@@ -65,8 +64,8 @@ go_sort:
   mov rbp, rsp
   sub rsp, 16 #8+4 # space for an int and a ^int (integer pointer)
   mov dword ptr [rbp-16], rdi # r9d = run : int 
-  # rbp-16 = int  num
-  # rbp-4  = int  counter
+  # rbp-16 = int  rum 
+  # rbp-4  = int  count
   # rbp-12 = int* numbers
   #;;;;;;;;;;#
   mov	rdi, input # fprintf 1º input: *File
@@ -75,14 +74,16 @@ go_sort:
 	call	__isoc99_fscanf@PLT
 	cmp eax, 1
 	je	.fscanf_ok
-.fscanf_erro:
+.fscanf_error:
 	lea	rdi, [finvalid]
 	jmp	.puts_and_leave
 .fscanf_ok:
+#: malloc begin
 	movsx	rdi, DWORD PTR [rbp-4] # has to use [mov] [s]ign e[x]tend malloc 1º arg
 	sal	rdi, 2 # multiply by 4, because it's the size for an integer
 	call	malloc@PLT
-	#mov	rbx, rax
+#: end
+
 	cmp rax, 0 # check if malloc returned null
 	jne	.malloc_success
 	lea	rdi, [fmalloc_failed]
@@ -104,38 +105,43 @@ go_sort:
 	call	puts@PLT
 
 #: printf begin 
-	mov	esi, dword ptr [rbp-16] #
 	lea	rdi, [fbrack_digit]
+	mov	esi, dword ptr [rbp-16] # run
 	xor	eax, eax
 	call	printf@PLT
 #: end
 
 
 #: for i .. count
-.L13:
-	cmp	DWORD PTR [rbp-4], r14d
-	jle	.L22
-	mov	rdi, QWORD PTR input[rip]
-	xor	eax, eax
-	mov	rdx, r12
-	mov	rsi, r15
+
+	xor	r14d, r14d #: int i = 0
+.for_i_to_count:
+	cmp	DWORD PTR [rbp-4], r14d #: cmp count with count with j 
+	jle	.for_i_to_count_done    #: if count <= i === ~(i < count) 
+#: fscanf begin
+	mov	rdi, QWORD PTR [input]
+	xor	eax, eax #: variadic function has to say how many vector reg is using in reg AL 
+	lea rdx, dword ptr [rbp-12 + 4*r14d] #: &number[i]
+	lea	rsi, qword ptr [fdigit2]
 	call	__isoc99_fscanf@PLT
-	dec	eax
-	jne	.L14
-	mov	esi, DWORD PTR [r12]
-	lea	rdi, .LC7[rip]
-	xor	eax, eax
+	cmp eax, 1 #: if (fscanf(input, "%d", &numbers[i]) != 1) {
+	jne	.fscanf_error
+
+	lea	rdi, [fdigit3]
+	mov	esi, DWORD PTR [rbp-12 + 4*r14d] #: numbers[i]
+	xor	eax, eax #: zeros everything else, but eve so it's no necessary because we only need AL to be 0
+  call	printf@PLT
 	inc	r14d
-	add	r12, 4
-	call	printf@PLT
-	jmp	.L13
-.L22:
-	mov	edi, 10
-	lea	r12, .LC7[rip]
+	jmp	.for_i_to_count
+
+.for_i_to_count_done:
+	mov	edi, 10 #: \n has opcode 10, so fine
 	call	putchar@PLT
-	mov	esi, DWORD PTR 4[rsp]
-	mov	rdi, rbx
+
+	mov	rdi, qword ptr [rpb-12] #: 1º numbers: ^int
+	mov	esi, dword ptr [rbp-4] #: 2º count: int
 	call	bubble_sort
+
 	lea	rdi, .LC8[rip]
 	call	puts@PLT
 	mov	rdi, QWORD PTR output[rip]

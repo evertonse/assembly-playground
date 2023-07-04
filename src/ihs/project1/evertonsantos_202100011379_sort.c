@@ -86,7 +86,7 @@ void go_sort(int run) {
     }
     printf("%d ", numbers[i]);
   }
-  printf("\n");
+  putchar('\n');
   // Sort the numbers using bubble sort
   bubble_sort(numbers, count);
 

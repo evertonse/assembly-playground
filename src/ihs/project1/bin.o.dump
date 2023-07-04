@@ -5,202 +5,202 @@ bin.o:     file format elf64-x86-64
 Disassembly of section .text:
 
 0000000000000000 <bubble_sort>:
-   0:	31 d2                	xor    %edx,%edx
-   2:	ff ce                	dec    %esi
-   4:	39 d6                	cmp    %edx,%esi
+   0:	31 d2                	xor    edx,edx
+   2:	ff ce                	dec    esi
+   4:	39 d6                	cmp    esi,edx
    6:	7e 2b                	jle    33 <bubble_sort+0x33>
-   8:	41 89 f1             	mov    %esi,%r9d
-   b:	31 c0                	xor    %eax,%eax
-   d:	41 29 d1             	sub    %edx,%r9d
-  10:	41 39 c1             	cmp    %eax,%r9d
+   8:	41 89 f1             	mov    r9d,esi
+   b:	31 c0                	xor    eax,eax
+   d:	41 29 d1             	sub    r9d,edx
+  10:	41 39 c1             	cmp    r9d,eax
   13:	7e 1a                	jle    2f <bubble_sort+0x2f>
-  15:	8b 0c 87             	mov    (%rdi,%rax,4),%ecx
-  18:	44 8b 44 87 04       	mov    0x4(%rdi,%rax,4),%r8d
-  1d:	44 39 c1             	cmp    %r8d,%ecx
+  15:	8b 0c 87             	mov    ecx,DWORD PTR [rdi+rax*4]
+  18:	44 8b 44 87 04       	mov    r8d,DWORD PTR [rdi+rax*4+0x4]
+  1d:	44 39 c1             	cmp    ecx,r8d
   20:	7e 08                	jle    2a <bubble_sort+0x2a>
-  22:	44 89 04 87          	mov    %r8d,(%rdi,%rax,4)
-  26:	89 4c 87 04          	mov    %ecx,0x4(%rdi,%rax,4)
-  2a:	48 ff c0             	inc    %rax
+  22:	44 89 04 87          	mov    DWORD PTR [rdi+rax*4],r8d
+  26:	89 4c 87 04          	mov    DWORD PTR [rdi+rax*4+0x4],ecx
+  2a:	48 ff c0             	inc    rax
   2d:	eb e1                	jmp    10 <bubble_sort+0x10>
-  2f:	ff c2                	inc    %edx
+  2f:	ff c2                	inc    edx
   31:	eb d1                	jmp    4 <bubble_sort+0x4>
   33:	c3                   	ret
 
 0000000000000034 <go_sort>:
-  34:	41 57                	push   %r15
-  36:	31 d2                	xor    %edx,%edx
-  38:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3f <go_sort+0xb>
-  3f:	41 56                	push   %r14
-  41:	41 55                	push   %r13
-  43:	41 54                	push   %r12
-  45:	55                   	push   %rbp
-  46:	89 fd                	mov    %edi,%ebp
-  48:	53                   	push   %rbx
-  49:	48 83 ec 18          	sub    $0x18,%rsp
-  4d:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 54 <go_sort+0x20>
-  54:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  34:	41 57                	push   r15
+  36:	31 d2                	xor    edx,edx
+  38:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 3f <go_sort+0xb>
+  3f:	41 56                	push   r14
+  41:	41 55                	push   r13
+  43:	41 54                	push   r12
+  45:	55                   	push   rbp
+  46:	89 fd                	mov    ebp,edi
+  48:	53                   	push   rbx
+  49:	48 83 ec 18          	sub    rsp,0x18
+  4d:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # 54 <go_sort+0x20>
+  54:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
   5b:	00 00 
-  5d:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
-  62:	31 c0                	xor    %eax,%eax
-  64:	89 54 24 04          	mov    %edx,0x4(%rsp)
-  68:	48 8d 54 24 04       	lea    0x4(%rsp),%rdx
+  5d:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+  62:	31 c0                	xor    eax,eax
+  64:	89 54 24 04          	mov    DWORD PTR [rsp+0x4],edx
+  68:	48 8d 54 24 04       	lea    rdx,[rsp+0x4]
   6d:	e8 00 00 00 00       	call   72 <go_sort+0x3e>
-  72:	ff c8                	dec    %eax
+  72:	ff c8                	dec    eax
   74:	74 09                	je     7f <go_sort+0x4b>
-  76:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 7d <go_sort+0x49>
+  76:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 7d <go_sort+0x49>
   7d:	eb 1d                	jmp    9c <go_sort+0x68>
-  7f:	48 63 7c 24 04       	movslq 0x4(%rsp),%rdi
-  84:	48 c1 e7 02          	shl    $0x2,%rdi
+  7f:	48 63 7c 24 04       	movsxd rdi,DWORD PTR [rsp+0x4]
+  84:	48 c1 e7 02          	shl    rdi,0x2
   88:	e8 00 00 00 00       	call   8d <go_sort+0x59>
-  8d:	48 89 c3             	mov    %rax,%rbx
-  90:	48 85 c0             	test   %rax,%rax
+  8d:	48 89 c3             	mov    rbx,rax
+  90:	48 85 c0             	test   rax,rax
   93:	75 16                	jne    ab <go_sort+0x77>
-  95:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 9c <go_sort+0x68>
+  95:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 9c <go_sort+0x68>
   9c:	e8 00 00 00 00       	call   a1 <go_sort+0x6d>
-  a1:	bf 01 00 00 00       	mov    $0x1,%edi
+  a1:	bf 01 00 00 00       	mov    edi,0x1
   a6:	e8 00 00 00 00       	call   ab <go_sort+0x77>
-  ab:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # b2 <go_sort+0x7e>
-  b2:	4c 8d 2d 00 00 00 00 	lea    0x0(%rip),%r13        # b9 <go_sort+0x85>
-  b9:	49 89 dc             	mov    %rbx,%r12
-  bc:	45 31 f6             	xor    %r14d,%r14d
+  ab:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # b2 <go_sort+0x7e>
+  b2:	4c 8d 2d 00 00 00 00 	lea    r13,[rip+0x0]        # b9 <go_sort+0x85>
+  b9:	49 89 dc             	mov    r12,rbx
+  bc:	45 31 f6             	xor    r14d,r14d
   bf:	e8 00 00 00 00       	call   c4 <go_sort+0x90>
-  c4:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # cb <go_sort+0x97>
-  cb:	4c 8d 3d 00 00 00 00 	lea    0x0(%rip),%r15        # d2 <go_sort+0x9e>
+  c4:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # cb <go_sort+0x97>
+  cb:	4c 8d 3d 00 00 00 00 	lea    r15,[rip+0x0]        # d2 <go_sort+0x9e>
   d2:	e8 00 00 00 00       	call   d7 <go_sort+0xa3>
-  d7:	89 ee                	mov    %ebp,%esi
-  d9:	4c 89 ef             	mov    %r13,%rdi
-  dc:	31 c0                	xor    %eax,%eax
+  d7:	89 ee                	mov    esi,ebp
+  d9:	4c 89 ef             	mov    rdi,r13
+  dc:	31 c0                	xor    eax,eax
   de:	e8 00 00 00 00       	call   e3 <go_sort+0xaf>
-  e3:	44 39 74 24 04       	cmp    %r14d,0x4(%rsp)
+  e3:	44 39 74 24 04       	cmp    DWORD PTR [rsp+0x4],r14d
   e8:	7e 37                	jle    121 <go_sort+0xed>
-  ea:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # f1 <go_sort+0xbd>
-  f1:	31 c0                	xor    %eax,%eax
-  f3:	4c 89 e2             	mov    %r12,%rdx
-  f6:	4c 89 fe             	mov    %r15,%rsi
+  ea:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # f1 <go_sort+0xbd>
+  f1:	31 c0                	xor    eax,eax
+  f3:	4c 89 e2             	mov    rdx,r12
+  f6:	4c 89 fe             	mov    rsi,r15
   f9:	e8 00 00 00 00       	call   fe <go_sort+0xca>
-  fe:	ff c8                	dec    %eax
+  fe:	ff c8                	dec    eax
  100:	0f 85 70 ff ff ff    	jne    76 <go_sort+0x42>
- 106:	41 8b 34 24          	mov    (%r12),%esi
- 10a:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 111 <go_sort+0xdd>
- 111:	31 c0                	xor    %eax,%eax
- 113:	41 ff c6             	inc    %r14d
- 116:	49 83 c4 04          	add    $0x4,%r12
+ 106:	41 8b 34 24          	mov    esi,DWORD PTR [r12]
+ 10a:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 111 <go_sort+0xdd>
+ 111:	31 c0                	xor    eax,eax
+ 113:	41 ff c6             	inc    r14d
+ 116:	49 83 c4 04          	add    r12,0x4
  11a:	e8 00 00 00 00       	call   11f <go_sort+0xeb>
  11f:	eb c2                	jmp    e3 <go_sort+0xaf>
- 121:	bf 0a 00 00 00       	mov    $0xa,%edi
- 126:	4c 8d 25 00 00 00 00 	lea    0x0(%rip),%r12        # 12d <go_sort+0xf9>
+ 121:	bf 0a 00 00 00       	mov    edi,0xa
+ 126:	4c 8d 25 00 00 00 00 	lea    r12,[rip+0x0]        # 12d <go_sort+0xf9>
  12d:	e8 00 00 00 00       	call   132 <go_sort+0xfe>
- 132:	8b 74 24 04          	mov    0x4(%rsp),%esi
- 136:	48 89 df             	mov    %rbx,%rdi
+ 132:	8b 74 24 04          	mov    esi,DWORD PTR [rsp+0x4]
+ 136:	48 89 df             	mov    rdi,rbx
  139:	e8 00 00 00 00       	call   13e <go_sort+0x10a>
- 13e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 145 <go_sort+0x111>
+ 13e:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 145 <go_sort+0x111>
  145:	e8 00 00 00 00       	call   14a <go_sort+0x116>
- 14a:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 151 <go_sort+0x11d>
- 151:	89 ea                	mov    %ebp,%edx
- 153:	31 c0                	xor    %eax,%eax
- 155:	4c 89 ee             	mov    %r13,%rsi
+ 14a:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # 151 <go_sort+0x11d>
+ 151:	89 ea                	mov    edx,ebp
+ 153:	31 c0                	xor    eax,eax
+ 155:	4c 89 ee             	mov    rsi,r13
  158:	e8 00 00 00 00       	call   15d <go_sort+0x129>
- 15d:	89 ee                	mov    %ebp,%esi
- 15f:	4c 89 ef             	mov    %r13,%rdi
- 162:	31 c0                	xor    %eax,%eax
+ 15d:	89 ee                	mov    esi,ebp
+ 15f:	4c 89 ef             	mov    rdi,r13
+ 162:	31 c0                	xor    eax,eax
  164:	e8 00 00 00 00       	call   169 <go_sort+0x135>
- 169:	31 ed                	xor    %ebp,%ebp
- 16b:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 172 <go_sort+0x13e>
- 172:	39 6c 24 04          	cmp    %ebp,0x4(%rsp)
+ 169:	31 ed                	xor    ebp,ebp
+ 16b:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # 172 <go_sort+0x13e>
+ 172:	39 6c 24 04          	cmp    DWORD PTR [rsp+0x4],ebp
  176:	7e 1f                	jle    197 <go_sort+0x163>
- 178:	8b 14 ab             	mov    (%rbx,%rbp,4),%edx
- 17b:	4c 89 e6             	mov    %r12,%rsi
- 17e:	31 c0                	xor    %eax,%eax
+ 178:	8b 14 ab             	mov    edx,DWORD PTR [rbx+rbp*4]
+ 17b:	4c 89 e6             	mov    rsi,r12
+ 17e:	31 c0                	xor    eax,eax
  180:	e8 00 00 00 00       	call   185 <go_sort+0x151>
- 185:	8b 34 ab             	mov    (%rbx,%rbp,4),%esi
- 188:	4c 89 e7             	mov    %r12,%rdi
- 18b:	31 c0                	xor    %eax,%eax
- 18d:	48 ff c5             	inc    %rbp
+ 185:	8b 34 ab             	mov    esi,DWORD PTR [rbx+rbp*4]
+ 188:	4c 89 e7             	mov    rdi,r12
+ 18b:	31 c0                	xor    eax,eax
+ 18d:	48 ff c5             	inc    rbp
  190:	e8 00 00 00 00       	call   195 <go_sort+0x161>
  195:	eb d4                	jmp    16b <go_sort+0x137>
- 197:	48 89 fe             	mov    %rdi,%rsi
- 19a:	bf 0a 00 00 00       	mov    $0xa,%edi
+ 197:	48 89 fe             	mov    rsi,rdi
+ 19a:	bf 0a 00 00 00       	mov    edi,0xa
  19f:	e8 00 00 00 00       	call   1a4 <go_sort+0x170>
- 1a4:	bf 0a 00 00 00       	mov    $0xa,%edi
+ 1a4:	bf 0a 00 00 00       	mov    edi,0xa
  1a9:	e8 00 00 00 00       	call   1ae <go_sort+0x17a>
- 1ae:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
- 1b3:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 1ae:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+ 1b3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
  1ba:	00 00 
  1bc:	74 05                	je     1c3 <go_sort+0x18f>
  1be:	e8 00 00 00 00       	call   1c3 <go_sort+0x18f>
- 1c3:	48 83 c4 18          	add    $0x18,%rsp
- 1c7:	48 89 df             	mov    %rbx,%rdi
- 1ca:	5b                   	pop    %rbx
- 1cb:	5d                   	pop    %rbp
- 1cc:	41 5c                	pop    %r12
- 1ce:	41 5d                	pop    %r13
- 1d0:	41 5e                	pop    %r14
- 1d2:	41 5f                	pop    %r15
+ 1c3:	48 83 c4 18          	add    rsp,0x18
+ 1c7:	48 89 df             	mov    rdi,rbx
+ 1ca:	5b                   	pop    rbx
+ 1cb:	5d                   	pop    rbp
+ 1cc:	41 5c                	pop    r12
+ 1ce:	41 5d                	pop    r13
+ 1d0:	41 5e                	pop    r14
+ 1d2:	41 5f                	pop    r15
  1d4:	e9 00 00 00 00       	jmp    1d9 <.LC12+0x10e>
 
 Disassembly of section .text.startup:
 
 0000000000000000 <main>:
-   0:	53                   	push   %rbx
-   1:	48 89 f3             	mov    %rsi,%rbx
-   4:	48 83 ec 10          	sub    $0x10,%rsp
-   8:	48 8b 7e 08          	mov    0x8(%rsi),%rdi
-   c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 13 <main+0x13>
-  13:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+   0:	53                   	push   rbx
+   1:	48 89 f3             	mov    rbx,rsi
+   4:	48 83 ec 10          	sub    rsp,0x10
+   8:	48 8b 7e 08          	mov    rdi,QWORD PTR [rsi+0x8]
+   c:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 13 <main+0x13>
+  13:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
   1a:	00 00 
-  1c:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
-  21:	31 c0                	xor    %eax,%eax
+  1c:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+  21:	31 c0                	xor    eax,eax
   23:	e8 00 00 00 00       	call   28 <main+0x28>
-  28:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 2f <main+0x2f>
-  2f:	48 85 c0             	test   %rax,%rax
+  28:	48 89 05 00 00 00 00 	mov    QWORD PTR [rip+0x0],rax        # 2f <main+0x2f>
+  2f:	48 85 c0             	test   rax,rax
   32:	75 1a                	jne    4e <main+0x4e>
-  34:	48 8b 73 08          	mov    0x8(%rbx),%rsi
-  38:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3f <main+0x3f>
+  34:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+  38:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 3f <main+0x3f>
   3f:	e8 00 00 00 00       	call   44 <main+0x44>
-  44:	b8 18 00 00 00       	mov    $0x18,%eax
+  44:	b8 18 00 00 00       	mov    eax,0x18
   49:	e9 9c 00 00 00       	jmp    ea <main+0xea>
-  4e:	48 8b 7b 10          	mov    0x10(%rbx),%rdi
-  52:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 59 <main+0x59>
+  4e:	48 8b 7b 10          	mov    rdi,QWORD PTR [rbx+0x10]
+  52:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 59 <main+0x59>
   59:	e8 00 00 00 00       	call   5e <main+0x5e>
-  5e:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 65 <main+0x65>
-  65:	48 85 c0             	test   %rax,%rax
+  5e:	48 89 05 00 00 00 00 	mov    QWORD PTR [rip+0x0],rax        # 65 <main+0x65>
+  65:	48 85 c0             	test   rax,rax
   68:	75 17                	jne    81 <main+0x81>
-  6a:	48 8b 73 10          	mov    0x10(%rbx),%rsi
-  6e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 75 <main+0x75>
+  6a:	48 8b 73 10          	mov    rsi,QWORD PTR [rbx+0x10]
+  6e:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # 75 <main+0x75>
   75:	e8 00 00 00 00       	call   7a <main+0x7a>
-  7a:	b8 a4 01 00 00       	mov    $0x1a4,%eax
+  7a:	b8 a4 01 00 00       	mov    eax,0x1a4
   7f:	eb 69                	jmp    ea <main+0xea>
-  81:	31 f6                	xor    %esi,%esi
-  83:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 8a <main+0x8a>
-  8a:	31 c0                	xor    %eax,%eax
-  8c:	48 8d 54 24 04       	lea    0x4(%rsp),%rdx
-  91:	89 74 24 04          	mov    %esi,0x4(%rsp)
-  95:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 9c <main+0x9c>
-  9c:	31 db                	xor    %ebx,%ebx
+  81:	31 f6                	xor    esi,esi
+  83:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # 8a <main+0x8a>
+  8a:	31 c0                	xor    eax,eax
+  8c:	48 8d 54 24 04       	lea    rdx,[rsp+0x4]
+  91:	89 74 24 04          	mov    DWORD PTR [rsp+0x4],esi
+  95:	48 8d 35 00 00 00 00 	lea    rsi,[rip+0x0]        # 9c <main+0x9c>
+  9c:	31 db                	xor    ebx,ebx
   9e:	e8 00 00 00 00       	call   a3 <main+0xa3>
-  a3:	ff c8                	dec    %eax
+  a3:	ff c8                	dec    eax
   a5:	74 13                	je     ba <main+0xba>
-  a7:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # ae <main+0xae>
+  a7:	48 8d 3d 00 00 00 00 	lea    rdi,[rip+0x0]        # ae <main+0xae>
   ae:	e8 00 00 00 00       	call   b3 <main+0xb3>
-  b3:	b8 45 00 00 00       	mov    $0x45,%eax
+  b3:	b8 45 00 00 00       	mov    eax,0x45
   b8:	eb 30                	jmp    ea <main+0xea>
-  ba:	48 63 44 24 04       	movslq 0x4(%rsp),%rax
-  bf:	48 39 c3             	cmp    %rax,%rbx
+  ba:	48 63 44 24 04       	movsxd rax,DWORD PTR [rsp+0x4]
+  bf:	48 39 c3             	cmp    rbx,rax
   c2:	73 0c                	jae    d0 <main+0xd0>
-  c4:	89 df                	mov    %ebx,%edi
-  c6:	48 ff c3             	inc    %rbx
+  c4:	89 df                	mov    edi,ebx
+  c6:	48 ff c3             	inc    rbx
   c9:	e8 00 00 00 00       	call   ce <main+0xce>
   ce:	eb ea                	jmp    ba <main+0xba>
-  d0:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # d7 <main+0xd7>
+  d0:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # d7 <main+0xd7>
   d7:	e8 00 00 00 00       	call   dc <main+0xdc>
-  dc:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # e3 <main+0xe3>
+  dc:	48 8b 3d 00 00 00 00 	mov    rdi,QWORD PTR [rip+0x0]        # e3 <main+0xe3>
   e3:	e8 00 00 00 00       	call   e8 <main+0xe8>
-  e8:	31 c0                	xor    %eax,%eax
-  ea:	48 8b 54 24 08       	mov    0x8(%rsp),%rdx
-  ef:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  e8:	31 c0                	xor    eax,eax
+  ea:	48 8b 54 24 08       	mov    rdx,QWORD PTR [rsp+0x8]
+  ef:	64 48 2b 14 25 28 00 	sub    rdx,QWORD PTR fs:0x28
   f6:	00 00 
   f8:	74 05                	je     ff <main+0xff>
   fa:	e8 00 00 00 00       	call   ff <main+0xff>
-  ff:	48 83 c4 10          	add    $0x10,%rsp
- 103:	5b                   	pop    %rbx
+  ff:	48 83 c4 10          	add    rsp,0x10
+ 103:	5b                   	pop    rbx
  104:	c3                   	ret

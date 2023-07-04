@@ -10,9 +10,6 @@
 #include <stdlib.h>
 // Entrada/saida padrao
 #include <stdio.h>
-
-int a = 'd';
-
 #include <stdio.h>
 #include <stdlib.h>
 

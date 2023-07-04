@@ -18,14 +18,15 @@ bubble_sort: # bubble_sort = fn(arr: *int, int: n: int), edi has the 'arr' point
 	jle	.j_true # if j <= n-i-1, jump to L9
   #: These part below has to be a multiple of 4 because 
   #: we're dealing with 32bits integers
-	mov	r9d, DWORD PTR [rdi+rax*4]    # r9 = arr[j]
-	mov	r8d, DWORD PTR [4+rdi+rax*4]  # r8 = arr[j+1]
+	mov	r9d, DWORD PTR [0 + rdi + rax*4]    # r9 = arr[j]
+	mov	r8d, DWORD PTR [4 + rdi + rax*4]  # r8 = arr[j+1]
+	#mov	r8d, DWORD PTR 4[rdi+rax*4]   # Why is this also valid? ? what if 4[exp]
 	#mov	r8d, DWORD PTR 4[rdi+rax*4]   # Why is this also valid? ? what if 4[exp]
 	cmp	r9d, r8d
 	jle	.j_dont_swap # if arr[j] > arr[j+1] jump l3
 # .swap r9 and r8
-	mov	DWORD PTR [rdi+rax*4], r8d # arr[j] = r8x
-	mov	DWORD PTR [4+rdi+rax*4], r9d
+	mov	DWORD PTR [0 + rdi + rax*4], r8d # arr[j] = r8x
+	mov	DWORD PTR [4 + rdi + rax*4], r9d
 .j_dont_swap:
 	inc	eax # j += 1
 	jmp	.j_cmp
@@ -36,66 +37,58 @@ bubble_sort: # bubble_sort = fn(arr: *int, int: n: int), edi has the 'arr' point
 	ret
 	
 
-.section	.rodata
-.LC0:
+.section	.data
+fdigit1:
 	.string	"%d\n"
-.LC1:
+finvalid:
 	.string	"Invalid input format."
-.LC2:
+fmalloc_failed:
 	.string	"Memory allocation failed."
-.LC3:
+fseparator:
 	.string	"################################"
-.LC4:
+finput:
 	.string	"--------------INPUT---------------"
-.LC5:
+fbrack_digit:
 	.string	"[%d] "
-.LC6:
+fdigit2:
 	.string	"%d"
-.LC7:
+fdigit3:
 	.string	"%d "
-.LC8:
+foutput:
 	.string	"---------------OUTPUT---------------"
 
 .section .text
 .global	go_sort
 
 go_sort:
-	push	r15
-	xor	edx, edx
-	lea	rsi, .LC0[rip]
-	push	r14
-	push	r13
-	push	r12
-	push	rbp
-	mov	ebp, edi
-	push	rbx
-	sub	rsp, 24
-	
-	mov	rdi, QWORD PTR input[rip]
-	mov	rax, QWORD PTR fs:40
-	mov	QWORD PTR 8[rsp], rax
-	xor	eax, eax
-	mov	DWORD PTR 4[rsp], edx
-	lea	rdx, 4[rsp]
+  push rbp
+  mov rbp, rsp
+  sub rsp, 12 #8+4 # space for an int and a ^int (integer pointer)
+  # rbp-4 = int counter
+  # rbp-12 = int*numbers
+  #;;;;;;;;;;#
+  mov	rdi, input # fprintf 1º input: *File
+  mov rsi, fdigit1 # fprintf 2º formated string
+  lea rdx, [rbp-4] # frprintf 3º load &counter in rdx 
 	call	__isoc99_fscanf@PLT
-	dec	eax
-	je	.L11
-.L14:
-	lea	rdi, .LC1[rip]
-	jmp	.L21
-.L11:
-	movsx	rdi, DWORD PTR 4[rsp]
-	sal	rdi, 2
+	cmp eax, 1
+	je	.fscanf_ok
+.fscanf_erro:
+	lea	rdi, [finvalid]
+	jmp	.puts_and_leave
+.fscanf_ok:
+	movsx	rdi, DWORD PTR [rbp-4] # has to use [mov] [s]ign e[x]tend malloc 1º arg
+	sal	rdi, 2 # multiply by 4, because it's the size for an integer
 	call	malloc@PLT
-	mov	rbx, rax
-	test	rax, rax
-	jne	.L12
-	lea	rdi, .LC2[rip]
-.L21:
+	#mov	rbx, rax
+	cmp rax, 0 # check if malloc returned null
+	jne	.malloc_success
+	lea	rdi, [fmalloc_failed]
+.puts_and_leave:
 	call	puts@PLT
 	mov	edi, 1
 	call	exit@PLT
-.L12:
+.malloc_success:
 	lea	rdi, .LC3[rip]
 	lea	r13, .LC5[rip]
 	mov	r12, rbx
@@ -187,7 +180,7 @@ go_sort:
 	jmp	free@PLT
 .LFE8:
 	
-	.section	.rodata.str1.1
+	.section	.data.str1.1
 .LC9:
 	.string	"r"
 .LC10:
@@ -197,12 +190,11 @@ go_sort:
 .LC12:
 	.string	"Failed to open the output %s.\n"
 
+
 .section	.text
 .globl	main
 main:
 	push	rbx
-	
-	
 	mov	rbx, rsi
 	sub	rsp, 16
 	
@@ -270,22 +262,15 @@ main:
 	
 	ret
 .LFE7:
-	
-	.globl	output
-	.bss
-	.align 8
-	.type	output, @object
-	
+
+.section .bss
+
+.globl	output
+.align 8
 output:
-	.zero	8
-	.globl	input
-	.align 8
-	.type	input, @object
-	
+  .zero	8
+
+.globl	input
+.align 8
 input:
-	.zero	8
-	.globl	a
-	.data
-	.align 4
-	.type	a, @object
-	
+  .zero	8

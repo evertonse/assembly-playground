@@ -302,12 +302,5 @@ output:
 	.size	input, 8
 input:
 	.zero	8
-	.globl	a
-	.data
-	.align 4
-	.type	a, @object
-	.size	a, 4
-a:
-	.long	100
 	.ident	"GCC: (GNU) 13.1.1 20230429"
 	.section	.note.GNU-stack,"",@progbits

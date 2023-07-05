@@ -1,0 +1,1232 @@
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12b6: file evertonsantos_202100011379_sort.s, line 127.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 0
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7e57c5e in free () from /usr/lib/libc.so.6
+1: *(int*)($rbp - 4) = 0
+EOF [assumed Y]
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12b6: file evertonsantos_202100011379_sort.s, line 127.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+fscanf_ok () at evertonsantos_202100011379_sort.s:96
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+malloc_success () at evertonsantos_202100011379_sort.s:109
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 0
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7e57c5e in free () from /usr/lib/libc.so.6
+1: *(int*)($rbp - 4) = 0
+Quit
+Please answer y or n.
+Please answer y or n.
+Please answer y or n.
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12b6: file evertonsantos_202100011379_sort.s, line 127.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+fscanf_ok () at evertonsantos_202100011379_sort.s:96
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+malloc_success () at evertonsantos_202100011379_sort.s:109
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+$1 = 0
+$2 = (void *) 0x7fffffffb9f4
+$3 = 3
+1: *(int*)($rbp - 4) = 3
+$4 = 3
+1: *(int*)($rbp - 4) = 3
+Undefined command: "$r14".  Try "help".
+$5 = 0
+$6 = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 0
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+for_i_to_count_done () at evertonsantos_202100011379_sort.s:149
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+$7 = 4294967298
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 3
+$8 = 0
+Starting program: /home/excyber/code/assembly-playground/src/ihs/project1/work.bin sort.input sort.output
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+go_sort () at evertonsantos_202100011379_sort.s:68
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+go_sort () at evertonsantos_202100011379_sort.s:69
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+go_sort () at evertonsantos_202100011379_sort.s:70
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+go_sort () at evertonsantos_202100011379_sort.s:71
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+go_sort () at evertonsantos_202100011379_sort.s:72
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+1: *(int*)($rbp - 4) = 21845
+2: $r14 = 140737354125312
+go_sort () at evertonsantos_202100011379_sort.s:74
+1: *(int*)($rbp - 4) = 21845
+2: $r14 = 140737354125312
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+2: $r14 = 140737354125312
+EOF [assumed Y]
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12b6: file evertonsantos_202100011379_sort.s, line 127.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+fscanf_ok () at evertonsantos_202100011379_sort.s:96
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+malloc_success () at evertonsantos_202100011379_sort.s:109
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+EOF [assumed Y]
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12b6: file evertonsantos_202100011379_sort.s, line 127.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:68
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:69
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:70
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:71
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:72
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+fscanf_ok () at evertonsantos_202100011379_sort.s:96
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+malloc_success () at evertonsantos_202100011379_sort.s:109
+1: *(int*)($rbp - 4) = 3
+$1 = 93824992257648
+$2 = 0x55555555a670
+1: *(int*)($rbp - 4) = 3
+Argument to arithmetic operation not a number or boolean.
+$3 = 0x7fffffffb9fc
+A syntax error in expression, near `'.
+$4 = 0x5555a670
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:127
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$5 = 93824992257648
+$6 = 0x55555555a670
+$7 = 0
+1: *(int*)($rbp - 4) = 3
+$8 = 93824992257648
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$9 = (void *) 0x7fffffffb9fc
+$10 = (void *) 0x7fffffffb9fc
+$11 = 0x5555a670
+Cannot access memory at address 0x5555a670
+$12 = 0
+Cannot access memory at address 0x5555a670
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+EOF [assumed Y]
+No symbol table is loaded.  Use the "file" command.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+No symbol table is loaded.  Use the "file" command.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+.gdb:10: Error in sourced command file:
+No symbol table is loaded.  Use the "file" command.
+Quit
+Quit
+Quit
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12ba: file evertonsantos_202100011379_sort.s, line 132.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:68
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:69
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:70
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:71
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+go_sort () at evertonsantos_202100011379_sort.s:72
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+1: *(int*)($rbp - 4) = 21845
+go_sort () at evertonsantos_202100011379_sort.s:74
+1: *(int*)($rbp - 4) = 21845
+1: *(int*)($rbp - 4) = 21845
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 0
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+fscanf_ok () at evertonsantos_202100011379_sort.s:97
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$1 = 12
+$2 = 12
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+malloc_success () at evertonsantos_202100011379_sort.s:110
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Undefined command: "p$".  Try "help".
+Argument to arithmetic operation not a number or boolean.
+$3 = 1431676528
+$4 = 0x5555a670
+$5 = 0x5555a670
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+$6 = 0x5555a670
+Undefined command: "p$".  Try "help".
+$7 = 93824992257648
+$8 = 0x55555555a670
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$9 = 0
+1: *(int*)($rbp - 4) = 3
+$10 = 93824992252576
+$11 = 93824992257648
+$12 = 0x55555555a670
+$13 = 0x55555555a670
+1: *(int*)($rbp - 4) = 3
+$14 = 0
+1: *(int*)($rbp - 4) = 3
+Cannot access memory at address 0x0
+$15 = 2
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+No symbol "r14" in current context.
+$16 = 1
+$17 = 2
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$18 = 1
+Quit
+$19 = 0
+1: *(int*)($rbp - 4) = 3
+$20 = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Undefined command: "r14".  Try "help".
+$21 = 2
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$22 = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+$23 = 3
+1: *(int*)($rbp - 4) = 3
+Undefined info command: "flags".  Try "help info".
+eflags         0x246               [ PF ZF IF ]
+$24 = 1001000110
+for_i_to_count_done () at evertonsantos_202100011379_sort.s:158
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$25 = 3
+$26 = 93824992257648
+$27 = 1
+$28 = 0
+1: *(int*)($rbp - 4) = 3
+$29 = 2
+$30 = 0
+$31 = 2
+$32 = 1
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$33 = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Value can't be converted to integer.
+0x55555555607c:	"[%d] "
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+for_i_to_count_output () at evertonsantos_202100011379_sort.s:187
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+$34 = 0
+$35 = 0
+$36 = 0
+Undefined command: "p$r13".  Try "help".
+$37 = 0
+$38 = 93824992257648
+$39 = 0x55555555a670
+$40 = (void *) 0x7fffffffb9fc
+$41 = 0x5555a670
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+No symbol "rsi" in current context.
+0x555555556085:	"%d "
+1: *(int*)($rbp - 4) = 3
+$42 = 0
+$43 = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+No symbol "r11" in current context.
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+Breakpoint 4 at 0x55555555535d: file evertonsantos_202100011379_sort.s, line 193.
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+$44 = 1
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 0
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 0
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+1: *(int*)($rbp - 4) = 3
+2: $r11 = 1
+3: $edx = 1
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12ba: file evertonsantos_202100011379_sort.s, line 132.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Breakpoint 4 at 0x55555555535d: file evertonsantos_202100011379_sort.s, line 193.
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Note: breakpoint 4 also set at pc 0x55555555535d.
+Breakpoint 5 at 0x55555555535d: file evertonsantos_202100011379_sort.s, line 193.
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+Undefined command: "p$".  Try "help".
+$1 = 3
+Breakpoint 6 at 0x55555555537c: file evertonsantos_202100011379_sort.s, line 205.
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:193
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+Undefined command: "nio".  Try "help".
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+$2 = 1
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+
+Breakpoint 6, for_i_to_count_output () at evertonsantos_202100011379_sort.s:205
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 3
+EOF [assumed Y]
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12ba: file evertonsantos_202100011379_sort.s, line 132.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Breakpoint 4 at 0x55555555537c: file evertonsantos_202100011379_sort.s, line 205.
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:205
+1: *(int*)($rbp - 4) = 3
+$1 = 3
+1: *(int*)($rbp - 4) = 3
+$2 = 3
+EOF [assumed Y]
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12ba: file evertonsantos_202100011379_sort.s, line 132.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Breakpoint 4 at 0x55555555537c: file evertonsantos_202100011379_sort.s, line 205.
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:132
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:205
+1: *(int*)($rbp - 4) = 3
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:205
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 1
+Continuing.
+
+Breakpoint 4, for_i_to_count_output () at evertonsantos_202100011379_sort.s:205
+1: *(int*)($rbp - 4) = 3
+2: $r14 = 2
+Continuing.
+[Inferior 1 (process 18477) exited with code 01]
+The program is not being run.
+Starting program: /home/excyber/code/assembly-playground/src/ihs/project1/work.bin sort.input sort.output
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $r14 = 140737354125312
+EOF [assumed Y]
+Breakpoint 1 at 0x121b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12ba: file evertonsantos_202100011379_sort.s, line 132.
+Breakpoint 3 at 0x124a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Ambiguous command "remove breakpoints": remove-inferiors, remove-symbol-file.
+Function "breakpoints" not defined.
+Breakpoint 4 at 0x55555555521b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 5 at 0x7ffff7e57c40
+Continuing.
+
+Breakpoint 5, 0x00007ffff7e57c40 in free () from /usr/lib/libc.so.6
+1: *(int*)($rbp - 4) = 3
+0x00007ffff7e57c44 in free () from /usr/lib/libc.so.6
+1: *(int*)($rbp - 4) = 3
+No symbol "out" in current context.
+source command requires file name of file to source.
+Run till exit from #0  0x00007ffff7e57c44 in free () from /usr/lib/libc.so.6
+for_i_to_count_output_done () at evertonsantos_202100011379_sort.s:223
+1: *(int*)($rbp - 4) = 3
+EOF [assumed Y]
+Breakpoint 1 at 0x120b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12aa: file evertonsantos_202100011379_sort.s, line 135.
+Breakpoint 3 at 0x123a: file evertonsantos_202100011379_sort.s, line 87.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+1: *(int*)($rbp - 4) = 3
+1: *(int*)($rbp - 4) = 3
+Quit
+Please answer y or n.
+Not confirmed.
+EOF [assumed Y]
+Breakpoint 1 at 0x120b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12aa: file evertonsantos_202100011379_sort.s, line 135.
+Breakpoint 3 at 0x123a: file evertonsantos_202100011379_sort.s, line 87.
+Breakpoint 4 at 0x1453: file evertonsantos_202100011379_sort.s, line 313.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 4, for_go_sort () at evertonsantos_202100011379_sort.s:313
+Continuing.
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+Continuing.
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+Quit
+EOF [assumed Y]
+Breakpoint 1 at 0x120b: file evertonsantos_202100011379_sort.s, line 64.
+Breakpoint 2 at 0x12aa: file evertonsantos_202100011379_sort.s, line 135.
+Breakpoint 3 at 0x123a: file evertonsantos_202100011379_sort.s, line 87.
+Breakpoint 4 at 0x1453: file evertonsantos_202100011379_sort.s, line 313.
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 4, for_go_sort () at evertonsantos_202100011379_sort.s:313
+$1 = 0
+$2 = 3
+2: $eax = 3
+3: $ebx = 0
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 3
+3: $ebx = 0
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 3
+3: $ebx = 0
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 3
+3: $ebx = 0
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 3
+3: $ebx = 0
+Run till exit from #0  go_sort () at evertonsantos_202100011379_sort.s:64
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+2: $eax = 0
+3: $ebx = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 3
+2: $eax = 4
+3: $ebx = 0
+Run till exit from #0  for_i_to_count () at evertonsantos_202100011379_sort.s:135
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 3
+2: $eax = 2
+3: $ebx = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 3
+2: $eax = 2
+3: $ebx = 0
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 3
+2: $eax = 2
+3: $ebx = 0
+Continuing.
+
+Breakpoint 4, for_go_sort () at evertonsantos_202100011379_sort.s:313
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 0
+3: $ebx = 1
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 0
+3: $ebx = 1
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 0
+3: $ebx = 1
+Continuing.
+
+Breakpoint 1, go_sort () at evertonsantos_202100011379_sort.s:64
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 0
+3: $ebx = 1
+Run till exit from #0  go_sort () at evertonsantos_202100011379_sort.s:64
+
+Breakpoint 3, go_sort () at evertonsantos_202100011379_sort.s:87
+1: *(int*)($rbp - 4) = 0
+2: $eax = 0
+3: $ebx = 1
+Run till exit from #0  go_sort () at evertonsantos_202100011379_sort.s:87
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 5
+2: $eax = 4
+3: $ebx = 1
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 5
+2: $eax = 2
+3: $ebx = 1
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 5
+2: $eax = 2
+3: $ebx = 1
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 5
+2: $eax = 2
+3: $ebx = 1
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 5
+2: $eax = 2
+3: $ebx = 1
+Continuing.
+
+Breakpoint 2, for_i_to_count () at evertonsantos_202100011379_sort.s:135
+1: *(int*)($rbp - 4) = 5
+2: $eax = 2
+3: $ebx = 1
+Continuing.
+
+Breakpoint 4, for_go_sort () at evertonsantos_202100011379_sort.s:313
+1: *(int*)($rbp - 4) = <error: Cannot access memory at address 0xffffffffffffffff>
+2: $eax = 0
+3: $ebx = 2
+EOF [assumed Y]

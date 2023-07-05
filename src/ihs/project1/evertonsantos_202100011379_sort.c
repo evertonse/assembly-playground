@@ -3,6 +3,8 @@
 // nomesobrenome_123456789012_exemplo gcc -Wall -O3 project.c -o project.bin &&
 // ./project.bin sort.input
 // ./nomesobrenome_123456789012_exemplo entrada saida
+// /home/excyber/code/assembly-playground/src/ihs/project1/evertonsantos_202100011379_sort.s
+
 
 // Numeros padronizados
 #include <stdint.h>

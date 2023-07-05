@@ -1,6 +1,6 @@
 .intel_syntax noprefix
 
-.global	bubble_sort
+.globl	bubble_sort
 .section .text
 # We don't mess with the stack here, so we don't need to save it
 bubble_sort: # bubble_sort = fn(arr: *int, int: n: int), edi has the 'arr' pointer and esi has the 'n'
@@ -16,16 +16,16 @@ bubble_sort: # bubble_sort = fn(arr: *int, int: n: int), edi has the 'arr' point
 .j_cmp:
 	cmp	ecx, eax # ecx - j
 	jle	.j_true # if j <= n-i-1, jump to L9
-  #: These part below has to be a multiple of 4 because 
-  #: we're dealing with 32bits integers
-	mov	r9d, DWORD PTR [0 + rdi + rax*4]    # r9 = arr[j]
-	mov	r8d, DWORD PTR [4 + rdi + rax*4]  # r8 = arr[j+1]
+  #:: These part below has to be a multiple of 4 because 
+  #:: we're dealing with 32bits integers
+	mov	r9d, dword ptr [0 + rdi + rax*4]    # r9 = arr[j]
+	mov	r8d, dword ptr [4 + rdi + rax*4]  # r8 = arr[j+1]
 	#mov	r8d, DWORD PTR 4[rdi+rax*4]   # Why is this also valid? ? what if 4[exp]
 	cmp	r9d, r8d
 	jle	.j_dont_swap # if arr[j] > arr[j+1] jump l3
 # .swap r9 and r8
-	mov	DWORD PTR [0 + rdi + rax*4], r8d # arr[j] = r8x
-	mov	DWORD PTR [4 + rdi + rax*4], r9d
+	mov	dword ptr [0 + rdi + rax*4], r8d # arr[j] = r8x
+	mov	dword ptr [4 + rdi + rax*4], r9d
 .j_dont_swap:
 	inc	eax # j += 1
 	jmp	.j_cmp
@@ -57,20 +57,20 @@ foutput:
 	.string	"---------------OUTPUT---------------"
 
 .section .text
-.global	go_sort
+.globl	go_sort
 
 go_sort:
-
-  push rbp
-#----------------#
-
-	push  rbx
-	push  r12
-	push  r13
-	push  r14
+#:: begin prologue
 	push  r15
+  push  r14
+	push  r13
+	push  r12
+  push  rbx
+	push  rbp
   mov rbp, rsp
-  sub rsp, 16 #8+4 # space for an int and a ^int (integer pointer)
+
+  sub rsp, 16+8 #16 # space for an int and a ^int (integer pointer)
+#:: end
   mov dword ptr [rbp - 16], edi # r9d = run : int 
   # rbp-16 = int  rum 
   # rbp-4  = int  count
@@ -84,119 +84,128 @@ go_sort:
   lea rdx, [rbp-4] # frprintf 3º load &counter in rdx 
   xor eax, eax # AL = 0
 
-  sub rsp, 8 
 	call	__isoc99_fscanf@PLT
-  add rsp, 8 
 
 	cmp eax, 1
 	je	.fscanf_ok
+
 .fscanf_error:
 	lea	rdi, [rip + finvalid]
 	jmp	.puts_and_leave
+
 .fscanf_ok:
-#: malloc begin
+#:: malloc begin
 	movsx	rdi, DWORD PTR [rbp-4] # has to use [mov] [s]ign e[x]tend malloc 1º arg
 	sal	rdi, 2 # multiply by 4, because it's the size for an integer
 	call	malloc@PLT
-#: end
+#:: end
 
 	cmp rax, 0 # check if malloc returned null
 	jne	.malloc_success
 	lea	rdi, [rip + fmalloc_failed]
+
 .puts_and_leave:
 	call	puts@PLT
-	mov	edi, 1
+	mov	edi, 24
 	call	exit@PLT
+
 .malloc_success:
   mov qword ptr [rbp-12], rax # number = return of malloc
+
+#:: puts begin
 	lea	rdi, [rip + fseparator]
 	call	puts@PLT
 	lea	rdi, [rip + finput]
 	call	puts@PLT
+#:: end
 
-#: printf begin 
+#:: printf begin 
 	lea	rdi, [rip + fbrack_digit]
 	mov	esi, dword ptr [rbp-16] # run
 	xor	eax, eax
 	call	printf@PLT
-#: end
+#:: end
 
 
-#: for i .. count
-
-	xor	r14d, r14d #: int i = 0
+#:: for i .. count
+  # r14 is preserver across function call, so we can use it here
+	xor	r14d, r14d #:: int i = 0
+  mov r13, qword ptr [rbp-12]  # r13 = numbers: ^int
 .for_i_to_count:
-	cmp	DWORD PTR [rbp-4], r14d #: cmp count with count with j 
-	jle	.for_i_to_count_done    #: if count <= i === ~(i < count) 
-#: fscanf begin
-	mov	rdi, qword ptr [rip + input]
+	cmp	DWORD PTR [rbp-4], r14d #:: cmp count with count with j 
+	jle	.for_i_to_count_done    #:: if count <= i === ~(i < count) 
 
-	lea rdx, qword ptr [rbp-12 + 4*r14] #: &number[i]
-	lea	rsi, qword ptr [rip + fdigit2]
-  xor	eax, eax #: variadic function has to say how many vector reg is using in reg AL 
+  #:: fscanf begin
+    mov	rdi, qword ptr [rip + input] # input: ^FILE
+    lea	rsi, qword ptr [rip + fdigit2]
+    lea rdx, [r13 + 4*r14]  # rdx = numbers
 
-sub rsp, 8
-	call	__isoc99_fscanf@PLT
-add rsp, 8
+    xor	eax, eax #:: variadic function has to say how many vector reg is using in reg AL 
+    call	__isoc99_fscanf@PLT
+  #:: end
 
-	cmp eax, 1 #: if (fscanf(input, "%d", &numbers[i]) != 1) {
+	cmp eax, 1 #:: if (fscanf(input, "%d", &numbers[i]) != 1) {
 	jne	.fscanf_error
 
-	lea	rdi, [rip + fdigit3]
-	mov	esi, DWORD PTR [rbp-12 + 4*r14] #: numbers[i]
-	xor	eax, eax #: zeros everything else, but eve so it's no necessary because we only need AL to be 0
-  call	printf@PLT
-	inc	r14d
+  #:: printf begin
+    lea	rdi, [rip + fdigit3]
+    mov	esi, dword ptr [r13 + 4*r14] #:: numbers[i]
+    xor	eax, eax #:: zeros everything else, but eve so it's no necessary because we only need AL to be 0
+    call	printf@PLT
+  #:: end
+
+	inc	r14
 	jmp	.for_i_to_count
 
 .for_i_to_count_done:
-	mov	edi, 10 #: \n has opcode 10, so fine
+	mov	edi, 10 #:: \n has opcode 10, so fine
 	call	putchar@PLT
 
-	mov	rdi, qword ptr [rbp-12] #: 1º numbers: ^int
-	mov	esi, dword ptr [rbp-4]  #: 2º count: int
+	mov	rdi, qword ptr [rbp-12] #:: 1º numbers: ^int
+	mov	esi, dword ptr [rbp-4]  #:: 2º count: int
 	call	bubble_sort
 
-#: begin puts("---------------OUTPUT---------------\n");
+#:: begin puts("---------------OUTPUT---------------\n");
 	lea	rdi, [rip + foutput]
 	call	puts@PLT
-#: end
+#:: end
 
-#: begin fprintf
-	mov	rdi, qword ptr [rip + output]
-  lea rsi, [rip + fbrack_digit]
-	mov	edx, dword ptr [rbp - 16]
+#:: begin fprintf
+	mov	rdi, qword ptr [rip + output] # output: ^FILE
+  lea rsi, [rip + fbrack_digit] # "[%d] "
+	mov	edx, dword ptr [rbp - 16] # run
 	xor	eax, eax
 	call	fprintf@PLT
-#: end 
+#:: end 
 
-#: begin printf 
+#:: begin printf 
   lea rdi, [rip + fbrack_digit]
 	mov	esi, dword ptr [rbp - 16]
 	xor	eax, eax
 	call	printf@PLT
-#: end
+#:: end
 
-  xor r11d, r11d # i = 0
+  xor r14d, r14d # i = 0
 .for_i_to_count_output:
-	cmp	dword ptr [rbp-4], r11d
+	cmp	dword ptr [rbp-4], r14d
 	jle	.for_i_to_count_output_done
 
-#: begin fprintf
-	mov	rdi, qword ptr [rip + output]
+#:: begin fprintf
+	mov	rdi, qword ptr [rip + output] # output: ^FILE
 	lea	rsi, [rip + fdigit3]
-	mov	edx, dword ptr [r11*4 + rbp - 12]
+  mov	edx, dword ptr[r13 + 4*r14]  #  numbers[i]
 	xor	eax, eax
 	call fprintf@PLT
-#: end
+#:: end
 
-#: begin printf
+#:: begin printf
 	lea	rdi, [rip + fdigit3]
-	mov	esi, dword ptr [r11*4 + rbp - 12]
+  mov	esi, dword ptr [r13 + 4*r14] # numbers[i]
 	xor	eax, eax
 	call printf@PLT
-#: end
-  inc	r11d
+#:: end
+
+  inc	r14
 	jmp	.for_i_to_count_output
 
 .for_i_to_count_output_done:
@@ -208,20 +217,19 @@ add rsp, 8
 	mov	edi, 10
 	call	putchar@PLT
 
-	add	rsp, 16
-	
-	mov rdi, qword ptr [rbp-12]  
-	#call free@PLT
+	mov rdi, r13
+	call free@PLT
 
-#: begin prologue
+#:: begin epilogue
+  add rsp, 16+8 #16 # space for an int and a ^int (integer pointer)
+  pop rbp
 	pop	rbx
 	pop	r12
 	pop	r13
 	pop	r14
 	pop	r15
-  pop rbp
   ret
-#: end
+#:: end
 	
 .section	.rodata
 str_read:
@@ -237,82 +245,99 @@ str_failed_output:
 .section	.text
 .globl	main
 main:
-	push	rbx
-	mov	rbx, rsi
+#:: begin prologue
+.main_prologue:
+  push r14
+  push r13
+  push r12
+	push rbx
+  push rbp
 	sub	rsp, 16
+#:: end
+  mov	rbx, rsi # rbx = argv
 
-#:begin fopen	
-	mov	rdi, qword ptr [rsi+8]
-	lea	rsi, [rip + str_read]
-	mov	rax, QWORD PTR fs:40 # @why
-	mov	qword ptr [rsp+8], rax
+#::begin fopen	
+	mov	rdi, qword ptr [rsi+8] #argv[1] argv + 8 because a pointer is 8 bytes
+	lea	rsi, [rip + str_read]  # rsi = "r"
+	mov	rax, QWORD PTR fs:40   # @why
+	mov	qword ptr [rsp + 8], rax #
 	xor	eax, eax
 	call	fopen@PLT
-#: end
+#:: end
+	mov	qword ptr [rip + input], rax # input = rax (result of fopen)
 
-	mov	QWORD PTR [rip + input], rax
-	test	rax, rax
-	jne	.L25
+	test	rax, rax # rax & rax; only way for this to be NULL is if every single bit is zero
+	jne	.fopen_input_success
 
-	mov	rsi, QWORD PTR 8[rbx]
-	lea	rdi, str_failed_input[rip]
-	jmp	.L35
-.L25:
-	mov	rdi, QWORD PTR 16[rbx]
-	lea	rsi, [rip + str_write]
+	mov	rsi, qword ptr [rbx+8] # argv[1]
+	lea	rdi, [rip + str_failed_input]
+	jmp	.print_and_return
+
+.fopen_input_success:
+
+#::begin fopen	
+	mov	rdi, qword ptr [rbx + 16] # argv[2]
+	lea	rsi, [rip + str_write] # "w"
 	call	fopen@PLT
-	mov	QWORD PTR output[rip], rax
-	test	rax, rax
-	jne	.L27
-#: begin printf
-	mov	rsi, QWORD PTR 16[rbx]
-	lea	rdi, str_failed_output[rip]
-.L35:
+#:: end
+
+	mov	qword ptr [rip + output], rax # output = rax
+	test	rax, rax # test if null, rax == null
+	jne	.fopen_output_success
+
+	mov	rsi, qword ptr [rbx + 16]
+	lea	rdi, [rip + str_failed_output]
+
+.print_and_return:
+  xor eax, eax
 	call	printf@PLT
-#: end
+  mov eax, 69 # retun code 69 which means sex
+	jmp	.main_epilogue
 
-	jmp	.L26
-
-.L27:
-	xor	esi, esi
-	mov	rdi, QWORD PTR input[rip]
-	xor	eax, eax
-	lea	rdx, [rsp + 4]
-	mov	dword ptr [rsp + 4], esi
-	lea	rsi, fdigit1[rip]
-	xor	ebx, ebx
+.fopen_output_success:
+#:: begin fscanf
+  mov	rdi, qword ptr [rip + input]
+  lea	rsi, [rip + fdigit1] # "%d\n"
+  lea	rdx, [rsp + 4] # &n_array
+  xor	eax, eax # eax = 0 
 	call	__isoc99_fscanf@PLT
-	dec	eax
-	je	.L28
-	lea	rdi, finvalid[rip]
+#:: end
+
+	cmp eax, 1 # fscanf, read only one
+	je	.f_scanf_n_array_success
+	lea	rdi, [rip + finvalid]
 	call	puts@PLT
-	jmp	.L26
-.L28:
-	movsx	rax, DWORD PTR 4[rsp]
-	cmp	rbx, rax
-	jnb	.L36
+  mov rax, 69
+	jmp	.main_epilogue
+
+.f_scanf_n_array_success:
+  xor ebx, ebx # ebx = 0
+	movsx	r13d, dword ptr [rsp + 4] # rax = n_array
+
+.for_go_sort:
+  cmp	ebx, r13d # ebx == ebax == n_array?
+	je .for_go_sort_done # if ebx == n_array, jmp to done
 	mov	edi, ebx
-	inc	rbx
-	call	go_sort
-	jmp	.L28
-.L36:
-	mov	rdi, QWORD PTR input[rip]
+  call go_sort
+
+	inc	ebx # ebx += 1
+	jmp	.for_go_sort
+
+.for_go_sort_done:
+	mov	rdi, qword ptr [rip + input]
 	call	fclose@PLT
-	mov	rdi, QWORD PTR output[rip]
+	mov	rdi, qword ptr [rip + output]
 	call	fclose@PLT
-.L26:
-	mov	rax, QWORD PTR 8[rsp]
-	sub	rax, QWORD PTR fs:40
-	je	.L30
-	call	__stack_chk_fail@PLT
-.L30:
+  mov eax, 0 # return ok
+
+.main_epilogue:
 	add	rsp, 16
-	
-	mov	eax, 1
+  pop rbp
 	pop	rbx
-	
+  pop r12
+  pop r13
+  pop r14
 	ret
-.LFE7:
 
 .section .bss
 

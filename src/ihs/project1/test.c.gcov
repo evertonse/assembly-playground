@@ -1,0 +1,21 @@
+        -:    0:Source:test.c
+        -:    0:Graph:test.bin-test.gcno
+        -:    0:Data:test.bin-test.gcda
+        -:    0:Runs:1
+        -:    1:// Numeros padronizados
+        -:    2:#include <stdint.h>
+        -:    3:// Biblioteca padrao
+        -:    4:#include <stdlib.h>
+        -:    5:// Entrada/saida padrao
+        -:    6:#include <stdio.h>
+        -:    7:#include <stdio.h>
+        -:    8:#include <stdlib.h>
+        -:    9:
+        -:   10:
+        -:   11:void go_sort(int);
+        -:   12:
+        -:   13:FILE *input, *output;
+        -:   14:
+        1:   15:int main(int argc, char *argv[]) {
+        1:   16:  return 420;
+        -:   17:}
